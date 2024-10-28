@@ -1,70 +1,40 @@
+/* Add border around the image */
 figure {
-    img {
-      aspect-ratio: 4 / 4;
-    }
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    border-radius: 5px; 
+    overflow: hidden;
   }
   
-  form {
-    > div {
-      width: fit-content;
-    }
+  figure img {
+    width: 90%;
+    height: auto;
+    object-fit: cover;
   }
   
-  
-  .content-bx {
-    h2 {
-      font-weight: bold;
-    }
-  
-    p {
-      color: #666;
-    }
-  }
-  
+  /* Increase input width and add blue border on focus */
   input {
-    padding: 12px;
+    padding: 8px;
     border: 1px solid #ccc !important;
     border-radius: 4px;
-    width: 100%;
-  }
-  
-  button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 12px;
-    cursor: pointer;
-  
-    &.google-signin-button {
-      background-color: #fff;
-      display: flex;
-      color: black;
-      align-items: center;
-  
-      .google-icon {
-        width: 20px;
-        margin-right: 8px;
+    width: 100%; /* Set width to 100% */
+    transition: border-color 0.3s ease; 
+    &:focus {
+        border: 2px solid #006ec4 !important;
+        outline: none;
       }
-    }
+      &:hover {
+        border: 1px solid #006ec4 !important;
+      }
   }
-  
-  
-  h2 {
-    font-size: 30px;
-    font-weight: 600;
-  }
-  
-  p {
-    color: #a2a1a8;
-    line-height: 18px;
-    font-weight: 400;
-  }
+ 
   
   button {
     border: 0;
     outline: 0;
-    padding: 5px 10px;
+    padding: 10px 10px;
     border-radius: 5px;
     font-size: 1rem;
     color: #fff;
@@ -95,3 +65,48 @@ figure {
     }
   }
   
+  /* Style for Google sign-in button */
+  button.google-signin-button {
+    border: 2px solid #a2a1a8;
+    background-color: #fff;
+    display: flex;
+    color: black;
+    align-items: center;
+  }
+  
+  button.google-signin-button .google-icon {
+    width: 20px;
+    margin-right: 8px;
+  }
+  
+  
+a {
+    text-decoration: none;
+    align-items: center;
+    gap: 0.5rem;
+    color: #16151c;
+    i {
+      font-size: 12px;
+    }
+  }
+  
+  h2 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  
+  p {
+    color: #a2a1a8;
+    line-height: 18px;
+    font-weight: 400;
+  }
+  .col-md-6.col-12 {
+    width: 30%; /* Adjust this percentage to make the container smaller */
+    margin: 0 auto; /* Center align */
+  }
+  
+  @media (min-width: 768px) {
+    .col-md-6.col-12 {
+      max-width: 60%; /* Smaller width on medium to larger screens */
+    }
+  }
