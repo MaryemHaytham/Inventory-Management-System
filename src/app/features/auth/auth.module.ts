@@ -6,8 +6,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { OtpComponent } from './components/otp/otp.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,12 @@ import { SharedModule } from 'src/app/shared/shared.module';
     ForgotPasswordComponent,
     OtpComponent,
   ],
-  imports: [CommonModule, AuthRoutingModule, ReactiveFormsModule, SharedModule],
+  imports: [
+    CommonModule,
+    AuthRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
+  ]
+
 })
 export class AuthModule {}

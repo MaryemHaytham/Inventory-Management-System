@@ -1,1 +1,36 @@
-<p>register works!</p>
+<section class="p-0 overflow-hidden d-flex align-items-center vh-100 justify-content-center">
+    <div class="row align-items-center m-0 w-100">
+      <div class="col-md-6 d-md-block d-none p-0">
+        <figure class="m-1 p-1">
+          <img src="./../../../../../assets/images/authPhoto.png" alt="authPhoto" class="w-100 h-100">
+        </figure>
+      </div>
+      <div class="col-md-6 col-12 d-flex gap-2 flex-column p-4">
+        <!-- Logo and Text Section -->
+        <div class="text-center mb-4">
+          <img src="./../../../../../assets/images/Logo.png" alt="Logo" class="logo-icon">
+          <h2>Create an account</h2>
+          <p class="text-muted">Start your free trial</p>
+        </div>
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="d-flex flex-column gap-3">
+          <div class="d-flex flex-column ">
+            <label for="name">Name*</label>
+            <input class="mb-4" type="text" placeholder="Name" formControlName="name" required>
+            <label for="name">Email*</label>
+            <input class="mb-4" type="email" placeholder="Email" formControlName="email" required>
+            <label for="name">Password*</label>
+            <input type="password" placeholder="Password" formControlName="password" required>
+            <p class="mt-2">Must be at least 8 characters.</p>
+          </div>
+          <button type="submit" class="d-block w-100">Register</button>
+          <button type="button" class="d-block w-100 google-signin-button">
+            <img src="./../../../../../assets/images/icons8-google.svg" alt="GoogleIcon" class="google-icon">
+            Sign up with Google
+          </button>
+        </form>
+        <p class="text-center">Already have an account? <a href="/login" class="text-primary">Login</a></p>
+      </div>
+    </div>
+  </section>
+  
