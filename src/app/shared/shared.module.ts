@@ -17,8 +17,5 @@ import {MatIconModule} from '@angular/material/icon';
   exports:[
     FormsModule, MatFormFieldModule, MatInputModule,ReactiveFormsModule,MatCheckboxModule,MatButtonModule,MatIconModule,
   ],
-@NgModule({
-  declarations: [],
-  imports: [CommonModule],
 })
 export class SharedModule {}
