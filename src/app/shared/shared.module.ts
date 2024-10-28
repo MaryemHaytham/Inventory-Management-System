@@ -13,7 +13,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
-  DynamicPopupComponent
+  DynamicPopupComponent,
     NavbarComponent,
     SidebarComponent
   ],
