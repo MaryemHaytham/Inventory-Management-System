@@ -1,2 +1,42 @@
-<h1>Login works</h1>
+<section class="vh-100 d-flex align-items-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="../../../../../assets/images/authPhoto.png" class="authPhoto" alt="authPhoto">
+            </div>
+            <div class="col-md-6 d-flex  align-items-center">
+                <div class="text-center">
+                    <img src="../../../../../assets/images/Logo.png" alt="Logo">
+                    <h2>Welcome 👋 </h2>
+                    <p class="text-muted">Please login here</p>
 
+                    <form [formGroup]="signinForm" (ngSubmit)="onSubmit(signinForm)" class="example-form">
+                        <mat-form-field class="example-full-width">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput>
+                        </mat-form-field>
+
+                        <mat-form-field class="example-full-width position-relative">
+                            <mat-label>Password</mat-label>
+                            <span (click)="hide = !hide" class="eye-icon pointer"><i class="fa-solid pointer"
+                                    [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i></span>
+                            <input matInput [type]="hide?'password':'text'">
+                        </mat-form-field>
+
+                        <div class="d-flex justify-content-between align-items-center">
+                            <mat-checkbox>Remember Me</mat-checkbox>
+                            <a class="" >Forgot Password?</a>
+                        </div>
+
+                        <button class="btn btn-primary w-100 rounded-3">Login</button>
+                        <button class="btn btn-light w-100 rounded-3 my-2">
+                            <mat-icon>Google</mat-icon>
+                            Sign in with Google
+                        </button>
+                        <p>Don’t have an account? <a class="" >Sign up</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
