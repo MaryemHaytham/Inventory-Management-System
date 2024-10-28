@@ -12,9 +12,6 @@ const routes: Routes = [
   {path:"otp",component:OtpComponent},
   {path:"forgot-password",component:ForgotPasswordComponent}
 
-
-
-
 ];
 
 @NgModule({
