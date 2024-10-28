@@ -24,6 +24,5 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavbarComponent,
     SidebarComponent
   ],
-
 })
 export class SharedModule {}
