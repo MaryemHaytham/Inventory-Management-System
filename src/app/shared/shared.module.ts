@@ -24,8 +24,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     NavbarComponent,
     SidebarComponent
   ],
-@NgModule({
-  declarations: [],
-  imports: [CommonModule],
+
 })
 export class SharedModule {}
