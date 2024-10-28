@@ -1,0 +1,18 @@
+<section
+  class="position-fixed top-0 start-0 bg-black bg-opacity-50 vh-100 w-100 d-flex align-items-center justify-content-center dynamic-popup">
+  <article class="bg-white px-3 py-4 rounded-4 d-flex flex-column align-items-center gap-2 popup">
+    <div>
+      <figure>
+        <img src="./../../../../assets/images/auth popup/welcome.png" class="w-100 object-fit-cover"
+          [alt]="valueToBeVisible == 'otp' ? 'OTP Code' : 'Reset Password'">
+      </figure>
+    </div>
+    <div class="content d-flex flex-column gap-2 justify-content-center">
+      <h2> {{ valueToBeVisible == 'otp' ? 'Code Sent' : 'Password Update' }} Successfully </h2>
+      <p>
+        {{ valueToBeVisible == 'otp' ? 'Plz Checkout your E-mail for the otp code' : 'Your password has been update successfully' }}
+      </p>
+    </div>
+    <button class="d-block w-100" (click)="onClose()"> Back to Login </button>
+  </article>
+</section>

@@ -1,5 +1,16 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import {
+  Component,
+  ComponentFactoryResolver,
+  ComponentRef,
+  ElementRef,
+  inject,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+  ViewContainerRef,
+} from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { DynamicPopupComponent } from 'src/app/shared/components/dynamic-popup/dynamic-popup.component';
 
 @Component({
   selector: 'app-otp',
@@ -15,6 +26,10 @@ export class OtpComponent {
   });
 
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
+  @ViewChild('popupContainer', { read: ViewContainerRef, static: true })
+  popupContainer!: ViewContainerRef;
+
+  private _ComponentFactoryResolver = inject(ComponentFactoryResolver);
 
   autoFocusNext(event: Event, index: number) {
     const input = event.target as HTMLInputElement;
@@ -29,6 +44,15 @@ export class OtpComponent {
   onSubmit(otpFormData: FormGroup) {
     if (otpFormData.valid) {
       console.log(otpFormData.value);
+      const componentFactory =
+        this._ComponentFactoryResolver.resolveComponentFactory(
+          DynamicPopupComponent
+        );
+
+      this.popupContainer.clear();
+      const componentRef = this.popupContainer.createComponent(componentFactory);
+      componentRef.instance.close.subscribe(() => this.popupContainer.clear());
+      componentRef.setInput('valueToBeVisible', 'otp')
     }
   }
 }
