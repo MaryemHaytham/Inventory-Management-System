@@ -1,0 +1,26 @@
+//form field
+::ng-deep .mat-mdc-text-field-wrapper{
+    border: 1px solid  #D0D5DD !important;
+  border-radius: 10px !important;
+  
+}
+::ng-deep .mat-mdc-text-field-wrapper:focus{
+  border: 50px solid #006EC4 !important;
+}
+//checkbox
+::ng-deep .mdc-checkbox .mdc-checkbox__native-control:enabled:focus:checked~.mdc-checkbox__background{
+    background-color: #006EC4 !important;
+    border-color: #006EC4 !important;
+}
+::ng-deep .mdc-checkbox .mdc-checkbox__native-control:enabled:checked~.mdc-checkbox__background{
+    background-color: #006EC4 !important;
+    border-color: #006EC4 !important;
+}
+//button
+.custom-btn{
+    background-color: #006EC4;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    border: 0;
+}
