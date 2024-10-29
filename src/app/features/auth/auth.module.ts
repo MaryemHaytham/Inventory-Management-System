@@ -9,12 +9,15 @@ import { OtpComponent } from './components/otp/otp.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
     ForgotPasswordComponent,
-    OtpComponent
+    OtpComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     CommonModule,
@@ -22,5 +25,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     SharedModule,
     ReactiveFormsModule
   ]
+
 })
-export class AuthModule { }
+export class AuthModule {}

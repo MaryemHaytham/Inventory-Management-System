@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { DynamicPopupComponent } from './components/dynamic-popup/dynamic-popup.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -13,6 +14,7 @@ import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
+  DynamicPopupComponent,
     NavbarComponent,
     SidebarComponent
   ],
@@ -24,7 +26,9 @@ import { RouterModule } from '@angular/router';
   exports: [
     FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatCheckboxModule, MatButtonModule, MatIconModule,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    DynamicPopupComponent
   ],
+
 })
 export class SharedModule { }
