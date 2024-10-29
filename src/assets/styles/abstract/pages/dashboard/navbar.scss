@@ -1,0 +1,13 @@
+
+
+.img-search{
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    left: 5px;
+    top: 20%;
+    z-index: 1000;
+}
+.input-group>:not(:first-child):not(.dropdown-menu):not(.valid-tooltip):not(.valid-feedback):not(.invalid-tooltip):not(.invalid-feedback){
+    padding-left: 25px !important;
+}
