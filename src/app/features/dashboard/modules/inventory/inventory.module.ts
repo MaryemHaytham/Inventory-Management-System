@@ -5,17 +5,25 @@ import { InventoryRoutingModule } from './inventory-routing.module';
 import { InventoryComponent } from './components/inventory/inventory.component';
 import { AddEditProductComponent } from './components/add-edit-product/add-edit-product.component';
 import { ProductInfoComponent } from './components/product-info/product-info.component';
+import { OverviewComponent } from './components/overview/overview.component';
+
 
 
 @NgModule({
   declarations: [
     InventoryComponent,
     AddEditProductComponent,
-    ProductInfoComponent
+    ProductInfoComponent,
+    OverviewComponent,
+   
   ],
   imports: [
     CommonModule,
-    InventoryRoutingModule
+    InventoryRoutingModule,
+
+  ],
+  exports:[
+    ProductInfoComponent
   ]
 })
 export class InventoryModule { }

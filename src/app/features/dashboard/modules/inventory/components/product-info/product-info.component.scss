@@ -1,0 +1,27 @@
+
+@import '../../../../../../../assets/styles/abstract/colors.scss';
+.product-info{
+    background-color:$white-color;
+  
+   
+}
+h3{
+    font-size:20px
+}
+a{
+    text-decoration: none;
+    color:#667085;
+    font-size:16px;
+    padding-bottom: 5px;
+    border-bottom: 2px solid #1366D9;
+}
+::ng-deep .mat-step-header .mat-step-icon {
+    display: none !important;
+  }
+.custom-btn{
+    border:1px solid $gray-color;
+    color:#5D6679;
+    border-radius: 4px;
+    padding:10px 16px ;
+    font-size:14px
+}
