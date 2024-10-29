@@ -1,0 +1,75 @@
+@import './../../../../../../../assets/styles/layout';
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #383E49;
+  font-family: "Lexend", sans-serif;
+}
+
+.purchase {
+  border: 1px solid $border-color;
+  padding: 5px;
+  border-radius: 5px;
+  color: #5D6679;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nums {
+  font-weight: 600;
+  color: #5D6679;
+}
+
+.text {
+  font-size: 14px;
+  color: #667085;
+  text-align: center;
+}
+
+p, h3, h2, figure, h4 {
+  margin: 0;
+}
+
+.see-all {
+  color: #0F50AA;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+td, th {
+  color: #666666;
+  font-size: 14px;
+}
+
+th {
+  font-weight: 500;
+}
+
+.low-quantity-content {
+  h4 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #383E49;
+  }
+
+  p {
+    font-size: 12px;
+    font-weight: 400;
+    color: #667085;
+  }
+}
+
+.bage {
+  p {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: #FEECEB;
+    color: #AA3028;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
