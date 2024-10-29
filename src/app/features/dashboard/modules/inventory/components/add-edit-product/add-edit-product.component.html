@@ -1,1 +1,61 @@
-<p>add-edit-product works!</p>
+<section class="position-fixed top-0 start-0 bg-black bg-opacity-50 vh-100 w-100 d-flex align-items-center justify-content-center dynamic-popup">
+    <article class="popup d-flex flex-column gap-2">
+        <h2 class="text-center">New Product</h2>
+
+        <div class="d-flex flex-column align-items-center mb-3">
+            <div class="image-upload text-center">
+                <span>Drag image here</span>
+                <a href="#" class="text-primary">Browse image</a>
+            </div>
+        </div>
+
+        <div class="content d-flex flex-column gap-3 overflow-auto">
+            <div class="form-group">
+                <label for="productName" class="label">Product Name</label>
+                <input type="text" id="productName" class="form-control" placeholder="Enter product name">
+            </div>
+
+            <div class="form-group">
+                <label for="productId" class="label">Product ID</label>
+                <input type="text" id="productId" class="form-control" placeholder="Enter product ID">
+            </div>
+
+            <div class="form-group">
+                <label for="category" class="label">Category</label>
+                <select id="category" class="form-control">
+                    <option value="" disabled selected>Select product category</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="buyingPrice" class="label">Buying Price</label>
+                <input type="text" id="buyingPrice" class="form-control" placeholder="Enter buying price">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity" class="label">Quantity</label>
+                <input type="number" id="quantity" class="form-control" placeholder="Enter product quantity">
+            </div>
+
+            <div class="form-group">
+                <label for="unit" class="label">Unit</label>
+                <input type="text" id="unit" class="form-control" placeholder="Enter product unit">
+            </div>
+
+            <div class="form-group">
+                <label for="expiryDate" class="label">Expiry Date</label>
+                <input type="date" id="expiryDate" class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label for="thresholdValue" class="label">Threshold Value</label>
+                <input type="number" id="thresholdValue" class="form-control" placeholder="Enter threshold value">
+            </div>
+        </div>
+
+        <div class="d-flex justify-content-between mt-3">
+            <button class="btn btn-outline-secondary" (click)="onClose()">Discard</button>
+            <button class="btn btn-primary">Add Product</button>
+        </div>
+    </article>
+</section>

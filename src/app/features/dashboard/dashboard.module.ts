@@ -16,6 +16,6 @@ import { HomeComponent } from './components/home/home.component';
     CommonModule,
     DashboardRoutingModule,
     SharedModule
-  ]
+  ],
 })
 export class DashboardModule { }
