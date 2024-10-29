@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./inventory.component.scss']
 })
 export class InventoryComponent {
+  isPopupVisible = false;
+
+openPopup() {
+  this.isPopupVisible = true;
+}
+
+closePopup() {
+  this.isPopupVisible = false;
+}
 
 }

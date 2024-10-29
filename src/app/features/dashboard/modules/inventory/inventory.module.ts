@@ -9,6 +9,10 @@ import { ProductInfoComponent } from './components/product-info/product-info.com
 import { OverviewComponent } from './components/overview/overview.component';
 
 import { SharedModule } from 'src/app/shared/shared.module';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
 
 
@@ -22,11 +26,16 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     InventoryRoutingModule,
+    AddEditProductComponent,
+    SharedModule,
+    MatFormFieldModule 
+    
 
   ],
   exports:[
     ProductInfoComponent,
-    SharedModule
+    AddEditProductComponent
+    
 
   ]
 })
