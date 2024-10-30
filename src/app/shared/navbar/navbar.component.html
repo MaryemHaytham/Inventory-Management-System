@@ -1,15 +1,33 @@
-<section class="my-3 shadow-lg p-3">
+<section class="p-3 bg-white">
     <div class="container px-3">
         <div class="d-flex justify-content-between align-items-center">
-            <div>
-                <div class="input-group position-relative">
-                    <img src="../../../assets/images/search.png" class="img-search" alt="search">
-                    <input type="search" placeholder="Search product, supplier, order" class="form-control p-2">
-                </div>
+            <div class="position-relative">
+                <i class="fa-solid fa-magnifying-glass search-item"></i>
+                <input type="search" placeholder="Search product, supplier, order" class="form-control px-4">
             </div>
-            <div>
-                <img src="../../../assets/images/Notification.png" alt="Notification">
-                <img src="../../../assets/images/Avatar.png" class="mx-3" alt="Avatar">
+            <div class="d-flex justify-content-center align-items-center">
+                <div class="mx-3">
+                    <img src="../../../assets/images/Notification.png" class="cursor" alt="Notification">
+                </div>
+
+                <div>
+                    <img src="../../../assets/images/Avatar.png" alt="Avatar" mat-icon-button [matMenuTriggerFor]="menu"
+                        aria-label="Example icon-button with a menu" class="cursor">
+                    <mat-menu #menu="matMenu">
+                        <button routerLink="/dashboard/profile/" mat-menu-item>
+                            <mat-icon>account_circle</mat-icon>
+                            <span>Profile</span>
+                        </button>
+                        <button routerLink="/auth/change-password" mat-menu-item>
+                            <mat-icon>lock-open</mat-icon>
+                            <span>Change Password</span>
+                        </button>
+                        <button mat-menu-item>
+                            <mat-icon>logout</mat-icon>
+                            <span>Logout</span>
+                        </button>
+                    </mat-menu>
+                </div>
             </div>
         </div>
     </div>

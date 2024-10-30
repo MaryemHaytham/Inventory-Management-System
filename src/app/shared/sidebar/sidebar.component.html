@@ -1,14 +1,31 @@
-<section class="vh-100 shadow-lg">
+<section class="bg-white h-100 position-fixed">
     <div class="container-fluid">
         <div class="p-3 d-flex align-items-center">
-            <img src="src/assets/images/sidebar/Logo.svg" alt="Logo">
+            <img src="./../../../assets/images/sidebar/Logo.png" alt="Logo">
             <h5 class="text-primary mx-2">KANBAN</h5>
         </div>
-        <div class="d-flex align-content-between">
-            <ng-container *ngFor="let item of menu">
-                <img [src]="item.icon" [alt]="item.title">
-                <a class="text-decoration-none" [routerLink]="item.link">{{item.title}}</a>
-            </ng-container>
+        <div class="d-flex flex-column justify-content-between h-100">
+            <div *ngFor="let item of menu">
+                <a [routerLink]="item.link" class="text-decoration-none text-muted">
+                    <div class="item mt-3 bgActiveImg">
+                        <span class="mx-2">
+                            <!-- <img [src]="item.icon" [alt]="item.title"> -->
+                            <span><i [class]="item.icon"></i></span>
+                            {{item.title}}</span>
+                    </div>
+                </a>
+            </div>
+            <div *ngFor="let item of settingMenu" >
+                <a [routerLink]="item.link" class="text-decoration-none text-muted">
+                    <div class="item mt-3 bgActiveImg">
+                        <span class="mx-2">
+                            <!-- <img [src]="item.icon" [alt]="item.title"> -->
+                            <span><i [class]="item.icon"></i></span>
+                            {{item.title}}</span>
+                    </div>
+                </a>
+            </div>
         </div>
     </div>
 </section>
+
