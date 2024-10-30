@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { InventoryPopupComponent } from 'src/app/shared/components/inventory-popup/inventory-popup.component';
 
 @Component({
   selector: 'app-inventory',
@@ -6,14 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./inventory.component.scss']
 })
 export class InventoryComponent {
-  isPopupVisible = false;
+  constructor(private dialog: MatDialog) {}
 
-openPopup() {
-  this.isPopupVisible = true;
-}
-
-closePopup() {
-  this.isPopupVisible = false;
-}
+  openNewOrderDialog() {
+    this.dialog.open(InventoryPopupComponent, {
+      width: '500px',
+      data: {}
+    });
+  }
 
 }

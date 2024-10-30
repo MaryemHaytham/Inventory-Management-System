@@ -74,7 +74,7 @@
                 <div class="header d-flex align-items-center justify-content-md-between flex-md-row flex-column gap-md-0 gap-0">
                     <h3>Products</h3>
                     <div class="d-flex align-items-center gap-3">
-                        <button (click)="openPopup()">Add Product</button>
+                        <button (click)="openNewOrderDialog()">Add Product</button>
                         <button >Filters</button>
                         <button >Download all</button>
                     </div>
@@ -149,9 +149,7 @@
                         <p class="m-0">Page 1 of 10</p>
                         <button class="btn btn-outline-secondary">Next</button>
                     </div>
-                    <ng-container *ngIf="isPopupVisible">
-                        <!-- <app-add-edit-product (close)="closePopup()"></app-add-edit-product> -->
-                      </ng-container>
+                    
                 </div>
             </div>
         </div>
