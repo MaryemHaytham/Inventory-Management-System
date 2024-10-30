@@ -4,6 +4,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { InventoryComponent } from './modules/inventory/components/inventory/inventory.component';
 import { OrdersComponent } from './components/orders/orders.component';
+import { ProductInfoComponent } from './modules/inventory/components/product-info/product-info.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,10 @@ const routes: Routes = [
         component: InventoryComponent,
         children: [
           { path: 'inventory', component: InventoryComponent, title: 'inventory' },
+        
         ],
       },
+      { path: 'product-info', component: ProductInfoComponent, title: 'productInfo' }
     ],
   },
 
