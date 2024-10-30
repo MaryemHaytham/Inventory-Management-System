@@ -1,0 +1,39 @@
+@import '../../../../../../src/assets/styles/abstract/colors.scss';
+.store{
+    background-color:$white-color;
+  h2{
+    font-size: 20px;
+    color: 20px;
+    font-weight: 500;
+
+  }
+  .storeBtn{
+    padding: 10px 16px;
+    border-radius: 4px;
+    background-color: #1366D9;
+    color: $white-color;
+  }
+  h3{
+    font-size: 16px;
+    font-weight: 600;
+    color: #48505E;
+  }
+  .storeTitle{
+  background-color: #F0F1F3;
+  }
+  .edit{
+    border: 1px solid #E8F1FD;
+    padding: 10px 32px;
+    border-radius: 4px;
+    color:#1366D9
+  }
+  h6{
+    color: #5D6679;
+    font-size: 16px;
+  }
+  p{
+    color:#858D9D;
+    font-size: 14px;
+  }
+   
+}
