@@ -7,6 +7,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { HomeComponent } from './components/home/home.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { StoreComponent } from './components/store/store.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { StoreComponent } from './components/store/store.component';
     DashboardComponent,
     HomeComponent,
     OrdersComponent,
-    StoreComponent
+    StoreComponent,
+    ReportsComponent
   ],
   imports: [
     CommonModule,
