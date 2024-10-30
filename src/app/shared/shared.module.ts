@@ -11,23 +11,33 @@ import { MatIconModule } from '@angular/material/icon';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
+import { GeneralPopupComponent } from './components/order-popup/general-popup.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { InventoryPopupComponent } from './components/inventory-popup/inventory-popup.component';
+
 
 @NgModule({
   declarations: [
   DynamicPopupComponent,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    GeneralPopupComponent,
+    InventoryPopupComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatCheckboxModule, MatButtonModule, MatIconModule,
+    FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatCheckboxModule, MatButtonModule, MatIconModule,MatDialogModule
   ],
   exports: [
     FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatCheckboxModule, MatButtonModule, MatIconModule,
     NavbarComponent,
     SidebarComponent,
-    DynamicPopupComponent
+    DynamicPopupComponent,
+    GeneralPopupComponent,
+    InventoryPopupComponent
+
+
   ],
 
 })

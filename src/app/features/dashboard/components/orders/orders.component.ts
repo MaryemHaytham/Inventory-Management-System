@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { GeneralPopupComponent } from 'src/app/shared/components/order-popup/general-popup.component';
 
 @Component({
   selector: 'app-orders',
@@ -6,14 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./orders.component.scss']
 })
 export class OrdersComponent {
-  isPopupVisible = false;
+  constructor(private dialog: MatDialog) {}
 
-  openPopup() {
-    this.isPopupVisible = true;
-  }
-  
-  closePopup() {
-    this.isPopupVisible = false;
+  openNewOrderDialog() {
+    this.dialog.open(GeneralPopupComponent, {
+      width: '500px',
+      data: {}
+    });
   }
 
 }
