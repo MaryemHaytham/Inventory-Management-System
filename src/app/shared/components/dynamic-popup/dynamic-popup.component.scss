@@ -1,5 +1,9 @@
 @import './../../../../assets/styles/layout';
 
+section {
+  backdrop-filter: blur(2px);
+}
+
 article > * {
   margin: 0;
 }

@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
+import { InventoryComponent } from './modules/inventory/components/inventory/inventory.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { ProductInfoComponent } from './modules/inventory/components/product-info/product-info.component';
 
 const routes: Routes = [
   {
@@ -10,8 +13,19 @@ const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent, title: 'Home' },
+      { path: 'orders', component: OrdersComponent, title: 'Orders' },
+      {
+        path: 'inventory',
+        component: InventoryComponent,
+        children: [
+          { path: 'inventory', component: InventoryComponent, title: 'inventory' },
+        
+        ],
+      },
+      { path: 'product-info', component: ProductInfoComponent, title: 'productInfo' }
     ],
   },
+
 ];
 
 @NgModule({
