@@ -5,6 +5,8 @@ import { HomeComponent } from './components/home/home.component';
 import { InventoryComponent } from './modules/inventory/components/inventory/inventory.component';
 import { OrdersComponent } from './components/orders/orders.component';
 import { ProductInfoComponent } from './modules/inventory/components/product-info/product-info.component';
+import { StoreComponent } from './components/store/store.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 const routes: Routes = [
   {
@@ -22,7 +24,10 @@ const routes: Routes = [
         
         ],
       },
-      { path: 'product-info', component: ProductInfoComponent, title: 'productInfo' }
+      { path: 'product-info', component: ProductInfoComponent, title: 'productInfo' },
+      { path: 'store', component: StoreComponent, title: 'store' },
+      { path: 'reports', component: ReportsComponent, title: 'reports' }
+
     ],
   },
 

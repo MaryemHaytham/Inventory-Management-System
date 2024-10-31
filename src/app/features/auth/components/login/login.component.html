@@ -1,42 +1,52 @@
-<section class="vh-100 d-flex align-items-center">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <img src="../../../../../assets/images/authPhoto.png" class="authPhoto" alt="authPhoto">
-            </div>
-            <div class="col-md-6 d-flex  align-items-center">
-                <div class="text-center">
-                    <img src="../../../../../assets/images/Logo.png" alt="Logo">
-                    <h2>Welcome 👋 </h2>
-                    <p class="text-muted">Please login here</p>
-
-                    <form [formGroup]="signinForm" (ngSubmit)="onSubmit(signinForm)" class="example-form">
-                        <mat-form-field class="example-full-width">
-                            <mat-label>Email Address</mat-label>
-                            <input matInput>
-                        </mat-form-field>
-
-                        <mat-form-field class="example-full-width position-relative">
-                            <mat-label>Password</mat-label>
-                            <span (click)="hide = !hide" class="eye-icon pointer"><i class="fa-solid pointer"
-                                    [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i></span>
-                            <input matInput [type]="hide?'password':'text'">
-                        </mat-form-field>
-
-                        <div class="d-flex justify-content-between align-items-center">
-                            <mat-checkbox>Remember Me</mat-checkbox>
-                            <a class="" >Forgot Password?</a>
-                        </div>
-
-                        <button class="btn btn-primary w-100 rounded-3">Login</button>
-                        <button class="btn btn-light w-100 rounded-3 my-2">
-                            <mat-icon>Google</mat-icon>
-                            Sign in with Google
-                        </button>
-                        <p>Don’t have an account? <a class="" >Sign up</a></p>
-                    </form>
-                </div>
-            </div>
-        </div>
+<section class="overflow-hidden d-flex align-items-center vh-100">
+  <div class="row align-items-center m-0 w-100">
+    <div class="col-md-6 p-0 d-md-block d-none">
+      <figure class="m-0 p-0">
+        <img src="./../../../../../assets/images/authPhoto.png" alt="authPhoto" class="w-100">
+      </figure>
     </div>
+    <div class="col-md-6 p-0 col-12 d-flex gap-2 flex-column vh-100 justify-content-center align-items-center">
+      <div class="d-flex flex-column gap-3 align-items-center w-100">
+        <figure class="m-0 logo-img text-center">
+          <img src="../../../../../assets/images/Logo.png" alt="Logo">
+        </figure>
+        <div class="content-bx text-center">
+          <h2>Welcome 👋 </h2>
+          <p class="text-muted">Please login here</p>
+        </div>
+      </div>
+
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit(signinForm)" class="d-flex flex-column gap-3 w-75">
+        <div class="d-flex flex-column gap-3">
+          <div class="d-flex flex-column gap-2">
+            <label for="email">Email Address</label>
+            <input type="email" formControlName="email" name="email" id="email">
+            <div *ngIf="signinForm.controls['email'].invalid && (signinForm.controls['email'].touched || signinForm.controls['email'].dirty)" class="text-danger">
+              <small *ngIf="signinForm.controls['email'].errors?.['required']">Email is required.</small>
+              <small *ngIf="signinForm.controls['email'].errors?.['email']">Please enter a valid email address.</small>
+            </div>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" formControlName="password" id="password">
+            <div *ngIf="signinForm.controls['password'].invalid && (signinForm.controls['password'].touched || signinForm.controls['password'].dirty)" class="text-danger">
+              <small *ngIf="signinForm.controls['password'].errors?.['required']">Password is required.</small>
+              <small *ngIf="signinForm.controls['password'].errors?.['pattern']">
+                Password must contain at least 8 characters, including uppercase, lowercase, number, and special character.
+              </small>
+            </div>
+          </div>
+          <div class="d-flex align-items-center justify-content-between">
+            <p>Did you forgot your password ?</p>
+            <a routerLink="/forget-password" class="text-primary"> Forget password </a>
+          </div>
+          <button type="submit" class="d-block w-100" [disabled]="signinForm.invalid">Login</button>
+        </div>
+      </form>
+
+      <div class="d-flex align-items-center justify-content-between flex-wrap mx-auto w-75">
+        <p> Don't have an account ? </p>
+        <a routerLink="/register" class="text-primary">Sign up</a>
+      </div>
+    </div>
+  </div>
 </section>

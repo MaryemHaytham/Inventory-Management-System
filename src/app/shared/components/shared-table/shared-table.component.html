@@ -1,0 +1,36 @@
+<article class="scrollbar">
+  <table class="table table-borderless m-0">
+    <thead>
+      <tr>
+        <th *ngFor="let header of tableHeaders">
+          {{ displayHeaders[header] }}
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of filteredTableBodyContent; let index = index">
+        <td *ngFor="let key of tableHeaders; let isFirstCol = first">
+          <ng-container *ngIf="key !== 'actions' && key !== 'state'">
+            <div>
+              <ng-container *ngIf="key === 'link' && row.row['link']; else nestedEl">
+                <a>{{
+                  getNestedValue(row.row["link"], "lecLabel")
+                  }}</a>
+              </ng-container>
+              <ng-template #nestedEl>
+                <div class="d-flex align-items-center justify-content-center gap-2">
+                  <figure *ngIf="isFirstCol && row.row['imgPath']" class="circle-watch">
+                    <img [src]="row.row['imgPath']" alt="" />
+                  </figure>
+                  <ng-container *ngIf="key != 'status'">
+                    {{ getNestedValue(row.row, key) }}
+                  </ng-container>
+                </div>
+              </ng-template>
+            </div>
+          </ng-container>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</article>

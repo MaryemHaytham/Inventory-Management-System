@@ -1,35 +1,49 @@
 <section class="p-0 overflow-hidden d-flex align-items-center vh-100 justify-content-center">
-    <div class="row align-items-center m-0 w-100">
-        <div class="col-md-6 d-md-block d-none">
-            <figure class="m-0 p-0">
-              <img src="./../../../../../assets/images/authPhoto.png" alt="authPhoto" class="w-100">
-            </figure>
-          </div>
-      <div class="col-md-6 col-12 d-flex gap-2 flex-column p-4">
-        <div class="text-center mb-4">
+  <div class="row align-items-center m-0 w-100">
+    <div class="col-md-6 p-0 d-md-block d-none">
+      <figure class="m-0 p-0">
+        <img src="./../../../../../assets/images/authPhoto.png" alt="authPhoto" class="w-100">
+      </figure>
+    </div>
+    <div class="col-md-6 p-0 col-12 d-flex gap-2 flex-column vh-100 justify-content-center align-items-center">
+
+      <div class="d-flex flex-column gap-2">
+        <figure>
           <img src="./../../../../../assets/images/Logo.png" alt="Logo" class="logo-icon">
+        </figure>
+
+        <div class="content-bx text-center">
           <h2>Create an account</h2>
           <p class="text-muted">Start your free trial</p>
         </div>
-
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="d-flex flex-column gap-3">
-          <div class="d-flex flex-column ">
-            <label for="name">Name*</label>
-            <input class="mb-4" type="text" placeholder="Name" formControlName="name" required>
-            <label for="name">Email*</label>
-            <input class="mb-4" type="email" placeholder="Email" formControlName="email" required>
-            <label for="name">Password*</label>
-            <input type="password" placeholder="Password" formControlName="password" required>
-            <p class="mt-2">Must be at least 8 characters.</p>
-          </div>
-          <button type="submit" class="d-block w-100">Register</button>
-          <button type="button" class="d-block w-100 google-signin-button">
-            <img src="./../../../../../assets/images/icons8-google.svg" alt="GoogleIcon" class="google-icon">
-            Sign up with Google
-          </button>
-        </form>
-        <p class="text-center">Already have an account? <a href="/login" class="text-primary">Login</a></p>
       </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="d-flex flex-column gap-3 w-75">
+        <div class="d-flex flex-column ">
+          <label class="mt-4" for="name">Name*</label>
+          <input type="text" placeholder="Name" formControlName="name" required>
+          <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].touched || registerForm.controls['name'].dirty)" class="text-danger">
+            <small *ngIf="registerForm.controls['name'].errors?.['required']">Name is required.</small>
+          </div>
+          <label class="mt-4" for="name">Email*</label>
+          <input  type="email" placeholder="Email" formControlName="email" required>
+          <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].touched || registerForm.controls['email'].dirty)" class="text-danger">
+            <small *ngIf="registerForm.controls['email'].errors?.['required']">Email is required.</small>
+            <small *ngIf="registerForm.controls['email'].errors?.['email']">Enter a valid email address.</small>
+          </div>
+          <label class="mt-4"  for="name">Password*</label>
+          <input type="password" placeholder="Password" formControlName="password" required>
+           <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty)" class="text-danger">
+      <small *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</small>
+      <small *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters.</small>
+      <small *ngIf="registerForm.controls['password'].errors?.['pattern']">Password must include an uppercase letter, lowercase letter, number, and special character.</small>
     </div>
-  </section>
-  
+          <p class="mt-2">Must be at least 8 characters.</p>
+          
+        </div>
+        <button type="submit" class="d-block w-100">Register</button>
+      </form>
+      <p class="text-center">Already have an account? <a routerLink="/login" class="text-primary">Login</a></p>
+    </div>
+  </div>
+</section>

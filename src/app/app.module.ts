@@ -7,25 +7,27 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    ToastrModule.forRoot(),
   ],
   providers: [
     {
-      provide : HTTP_INTERCEPTORS,
-      useClass : GlobalInterceptor,
-      multi : true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

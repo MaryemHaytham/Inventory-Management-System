@@ -3,43 +3,31 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class GlobalInterceptor implements HttpInterceptor {
+  constructor(private spinner: NgxSpinnerService) { }
 
-  constructor() {}
-
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    
-    
-   
-    const token = localStorage.getItem('userToken');
-    const baseUrl: string = ''
-
-
-
-    let newHeaders = {};
-    
-    if (token !== null) {
-
-      newHeaders = {
-        'Authorization': `Bearer ${token}`
-      }
-    }
-    let cloned = request.clone({
-      setHeaders: newHeaders,
-      url: baseUrl + request.url
-    })
-
-
-
-    
-
-
-    return next.handle(cloned)
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
+    const baseUrl: string =
+      'https://apis004-001-site1.etempurl.com/swagger/v1/swagger.json/';
+    const token: string = localStorage.getItem('token') ?? '';
+    const modifiedReq = request.clone({
+      url: baseUrl + request.url,
+      setHeaders: { Authorization: `Bearer ${token}` },
+    });
+    this.spinner.show();
+    return next.handle(modifiedReq).pipe(
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
   }
-  
 }

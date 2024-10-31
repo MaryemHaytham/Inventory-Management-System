@@ -19,10 +19,10 @@ import { DynamicPopupComponent } from 'src/app/shared/components/dynamic-popup/d
 })
 export class OtpComponent {
   otpForm: FormGroup = new FormGroup({
-    digit1: new FormControl(null, Validators.required),
-    digit2: new FormControl(null, Validators.required),
-    digit3: new FormControl(null, Validators.required),
-    digit4: new FormControl(null, Validators.required),
+    digit1: new FormControl('', [Validators.required, Validators.pattern('^[0-9]$')]),
+    digit2: new FormControl('', [Validators.required, Validators.pattern('^[0-9]$')]),
+    digit3: new FormControl('', [Validators.required, Validators.pattern('^[0-9]$')]),
+    digit4: new FormControl('', [Validators.required, Validators.pattern('^[0-9]$')]),
   });
 
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
@@ -30,6 +30,7 @@ export class OtpComponent {
   popupContainer!: ViewContainerRef;
 
   private _ComponentFactoryResolver = inject(ComponentFactoryResolver);
+  
 
   autoFocusNext(event: Event, index: number) {
     const input = event.target as HTMLInputElement;
@@ -43,16 +44,22 @@ export class OtpComponent {
 
   onSubmit(otpFormData: FormGroup) {
     if (otpFormData.valid) {
-      console.log(otpFormData.value);
+      let otpObject = {
+        otp: Object.keys(otpFormData.value)
+          .map((el) => otpFormData.value[el])
+          .join('')
+      };
+      console.log(otpObject);
       const componentFactory =
         this._ComponentFactoryResolver.resolveComponentFactory(
           DynamicPopupComponent
         );
 
       this.popupContainer.clear();
-      const componentRef = this.popupContainer.createComponent(componentFactory);
+      const componentRef =
+        this.popupContainer.createComponent(componentFactory);
       componentRef.instance.close.subscribe(() => this.popupContainer.clear());
-      componentRef.setInput('valueToBeVisible', 'otp')
+      componentRef.setInput('valueToBeVisible', 'otp');
     }
   }
 }

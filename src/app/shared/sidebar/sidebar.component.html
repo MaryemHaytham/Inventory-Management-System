@@ -1,31 +1,30 @@
 <section class="bg-white h-100 position-fixed">
-    <div class="container-fluid">
-        <a class="p-3 d-flex align-items-center text-decoration-none cursor" [routerLink]="['/dashboard/home']">
-            <img src="./../../../assets/images/sidebar/Logo.png" alt="Logo">
-            <h5 class="text-primary mx-2">KANBAN</h5>
-        </a>
-        <div class="d-flex flex-column align-content-between">
-            <div *ngFor="let item of menu">
-                <a [routerLink]="item.link" class="text-decoration-none text-muted">
-                    <div class="cursor mt-3 bgActiveImg">
-                        <span class="mx-2">
-                            <!-- <img [src]="item.icon" [alt]="item.title"> -->
-                            <span><i [class]="item.icon"></i></span>
-                            {{item.title}}</span>
-                    </div>
-                </a>
-            </div>
-            <div *ngFor="let item of settingMenu" >
-                <a [routerLink]="item.link" class="text-decoration-none text-muted">
-                    <div class="cursor mt-3 bgActiveImg">
-                        <span class="mx-2">
-                            <!-- <img [src]="item.icon" [alt]="item.title"> -->
-                            <span><i [class]="item.icon"></i></span>
-                            {{item.title}}</span>
-                    </div>
-                </a>
-            </div>
-        </div>
+  <div class="container-fluid h-100 d-flex flex-column gap-3">
+    <div class="p-3 d-flex align-items-center">
+      <img src="./../../../assets/images/sidebar/Logo.png" alt="Logo">
+      <h5 class="text-primary mx-2">KANBAN</h5>
     </div>
+    <div class="d-flex flex-column justify-content-between h-75">
+      <div class="d-flex flex-column gap-4">
+        <div *ngFor="let item of menu">
+          <a [routerLink]="item.link" class="text-decoration-none text-muted">
+            <div class="item bgActiveImg">
+              <span class="mx-2">
+                <span><i [class]="item.icon"></i></span>
+                {{item.title}}</span>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div *ngFor="let item of settingMenu">
+        <a [routerLink]="item.link" class="text-decoration-none text-muted">
+          <div class="item mt-3 bgActiveImg">
+            <span class="mx-2">
+              <span><i [class]="item.icon"></i></span>
+              {{item.title}}</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
-

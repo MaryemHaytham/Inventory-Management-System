@@ -1,14 +1,14 @@
-<section class="p-2 overflow-hidden d-flex align-items-center vh-100 justify-content-center">
-  <div class="row align-items-center">
-    <div class="col-md-6 d-md-block d-none">
+<section class="p-0 overflow-hidden d-flex align-items-center vh-100 justify-content-center">
+  <div class="row align-items-center m-0 w-100 p-0">
+    <div class="col-md-6 d-md-block d-none p-0">
       <figure class="m-0">
         <img src="./../../../../../assets/images/authPhoto.png" alt="authPhoto" class="w-100">
       </figure>
     </div>
-    <div class="col-md-6 col-12 d-flex gap-2 flex-column">
+    <div class="col-md-6 p-0 col-12 d-flex gap-2 flex-column vh-100 justify-content-center align-items-center">
 
-      <div class="d-flex flex-column gap-3">
-        <a href=""> <i class="fa-solid fa-chevron-left"></i> Back </a>
+      <div class="d-flex flex-column gap-3 w-75">
+        <a routerLink="../"> <i class="fa-solid fa-chevron-left"></i> Back </a>
         <div class="content-bx">
           <h2> Enter OTP </h2>
           <p>
@@ -18,13 +18,16 @@
         </div>
       </div>
 
-      <form [formGroup]="otpForm" (ngSubmit)="onSubmit(otpForm)" class="d-flex flex-column gap-3">
+      <form [formGroup]="otpForm" (ngSubmit)="onSubmit(otpForm)" class="d-flex flex-column gap-3 w-75">
         <div class="d-flex flex-column gap-3">
           <div class="d-flex align-items-center gap-2">
             <input type="text" formControlName="digit1" #otpInput (input)="autoFocusNext($event, 0)" maxlength="1">
             <input type="text" formControlName="digit2" #otpInput (input)="autoFocusNext($event, 1)" maxlength="1">
             <input type="text" formControlName="digit3" #otpInput (input)="autoFocusNext($event, 2)" maxlength="1">
             <input type="text" formControlName="digit4" #otpInput (input)="autoFocusNext($event, 3)" maxlength="1">
+          </div>
+          <div *ngIf="otpForm.invalid && otpForm.touched" class="text-danger">
+            <small *ngIf="otpForm.controls['digit1'].errors?.['required'] || otpForm.controls['digit1'].errors?.['pattern']">Each digit is required and must be a number.</small>
           </div>
           <button type="submit" class="d-block w-100" [disabled]="otpForm.invalid">Verify</button>
         </div>
