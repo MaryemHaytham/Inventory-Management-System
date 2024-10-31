@@ -12,38 +12,47 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 
-import { MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { GeneralPopupComponent } from './components/order-popup/general-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InventoryPopupComponent } from './components/inventory-popup/inventory-popup.component';
 
-
-
 @NgModule({
   declarations: [
-  DynamicPopupComponent,
+    DynamicPopupComponent,
     NavbarComponent,
     SidebarComponent,
     GeneralPopupComponent,
-    InventoryPopupComponent
+    InventoryPopupComponent,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatCheckboxModule, MatButtonModule, MatIconModule,MatDialogModule,MatMenuModule
-
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    MatMenuModule
   ],
   exports: [
-    FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatCheckboxModule, MatButtonModule, MatIconModule,MatMenuModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatIconModule,
     NavbarComponent,
     SidebarComponent,
     DynamicPopupComponent,
     GeneralPopupComponent,
-    InventoryPopupComponent
-
-
+    InventoryPopupComponent,
+    MatMenuModule
   ],
-
 })
-export class SharedModule { }
+export class SharedModule {}

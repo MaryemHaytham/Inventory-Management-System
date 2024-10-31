@@ -43,16 +43,22 @@ export class OtpComponent {
 
   onSubmit(otpFormData: FormGroup) {
     if (otpFormData.valid) {
-      console.log(otpFormData.value);
+      let otpObject = {
+        otp: Object.keys(otpFormData.value)
+          .map((el) => otpFormData.value[el])
+          .join('')
+      };
+      console.log(otpObject);
       const componentFactory =
         this._ComponentFactoryResolver.resolveComponentFactory(
           DynamicPopupComponent
         );
 
       this.popupContainer.clear();
-      const componentRef = this.popupContainer.createComponent(componentFactory);
+      const componentRef =
+        this.popupContainer.createComponent(componentFactory);
       componentRef.instance.close.subscribe(() => this.popupContainer.clear());
-      componentRef.setInput('valueToBeVisible', 'otp')
+      componentRef.setInput('valueToBeVisible', 'otp');
     }
   }
 }

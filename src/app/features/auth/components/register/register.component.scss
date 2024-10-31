@@ -1,109 +1,65 @@
-figure {
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    border-radius: 5px; 
-    overflow: hidden;
+@import './../../../../../assets/styles/layout';
+
+figure:not(.logo-img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  padding: 8px;
+  border: 1px solid #ccc !important;
+  border-radius: 4px;
+  width: 100%;
+  transition: border-color 0.3s ease;
+  outline: none;
+  &:focus {
+    border: 1px solid #006ec4 !important;
   }
-  
-  figure img {
-    width: 90%;
-    height: auto;
-    object-fit: cover;
-  }
-  
-  input {
-    padding: 8px;
-    border: 1px solid #ccc !important;
-    border-radius: 4px;
-    width: 100%; 
-    transition: border-color 0.3s ease; 
-    &:focus {
-        border: 2px solid #006ec4 !important;
-        outline: none;
-      }
-      &:hover {
-        border: 1px solid #006ec4 !important;
-      }
-  }
- 
-  
-  button {
-    border: 0;
-    outline: 0;
-    padding: 10px 10px;
-    border-radius: 5px;
-    font-size: 1rem;
-    color: #fff;
-    font-weight: 300;
-    background-color: #006ec4;
-    position: relative;
-    transition: 0.3s linear;
-    overflow: hidden;
-  
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 50%;
-      background-color: rgba($color: #fff, $alpha: 0.25);
-      transform: rotate(-45deg) translate(-100px, -100px);
-      border-radius: inherit;
-      transition: 0.35s linear;
-      pointer-events: none;
-    }
-  
-    &:hover {
-      &::after {
-        transform: rotate(-45deg) translate(60px, 110px);
-      }
-    }
-  }
-  
-  button.google-signin-button {
-    border: 2px solid #a2a1a8;
-    background-color: #fff;
-    display: flex;
-    color: black;
-    align-items: center;
-  }
-  
-  button.google-signin-button .google-icon {
-    width: 20px;
-    margin-right: 8px;
-  }
-  
-  
+}
+
+button.google-signin-button {
+  border: 2px solid #a2a1a8;
+  background-color: #fff;
+  display: flex;
+  color: black;
+  align-items: center;
+}
+
+button.google-signin-button .google-icon {
+  width: 20px;
+  margin-right: 8px;
+}
+
 a {
-    text-decoration: none;
-    align-items: center;
-    gap: 0.5rem;
-    color: #16151c;
-    i {
-      font-size: 12px;
-    }
+  text-decoration: none;
+  align-items: center;
+  gap: 0.5rem;
+  color: #16151c;
+  i {
+    font-size: 12px;
   }
-  
-  h2 {
-    font-size: 30px;
-    font-weight: 600;
-  }
-  
-  p {
-    color: #a2a1a8;
-    line-height: 18px;
-    font-weight: 400;
-  }
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+p {
+  color: #a2a1a8;
+  line-height: 18px;
+  font-weight: 400;
+}
+.col-md-6.col-12 {
+  width: 30%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
   .col-md-6.col-12 {
-    width: 30%; 
-    margin: 0 auto; 
+    max-width: 60%;
   }
-  
-  @media (min-width: 768px) {
-    .col-md-6.col-12 {
-      max-width: 60%; 
-    }
-  }
+}

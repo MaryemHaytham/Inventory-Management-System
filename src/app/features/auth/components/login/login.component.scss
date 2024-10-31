@@ -1,23 +1,70 @@
-// @import 'src/assets/styles/_layout.scss';
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-}
+@import "src/assets/styles/_layout.scss";
 
-.example-full-width {
-    width: 100%;
-
+figure:not(.logo-img) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
 .eye-icon {
-    position: absolute;
-    top: 30%;
-    right: 0px;
-    z-index: 100;
+  position: absolute;
+  top: 30%;
+  right: 0px;
+  z-index: 100;
 }
 
-.authPhoto {
-    aspect-ratio: 70%;
-    width: 80%;
+input {
+  border-radius: 5px;
+  border: 1px solid #ececee;
+  padding: 5px 10px;
+  outline: none;
+  display: block;
+  transition: 0.3s linear;
+  width: 100%;
+
+  &:focus {
+    border: 1px solid #006ec4;
+  }
+}
+
+a {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #16151c;
+  i {
+    font-size: 12px;
+  }
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 600;
+}
+
+p {
+  color: #a2a1a8;
+  line-height: 18px;
+  font-weight: 400;
+  margin: 0;
+  inline-size: 30rem;
+}
+
+form {
+  margin: 0 auto;
+
+  p {
+    inline-size: unset;
+  }
+}
+
+button {
+  cursor: pointer;
+}
+
+form + div p {
+  inline-size: unset;
 }
