@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ISignin } from '../model/auth';
 import { HttpClient } from '@angular/common/http';
+import {
+  ISignin, IRegister, IChangePassword, IResetPassword, IForgetPassword, IResponse
+} from '../model/auth';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
 
-  constructor(private _HttpClient:HttpClient){}
+  constructor(private _HttpClient: HttpClient) {}
 
-  onSignin(data:ISignin):Observable<ISignin>
-  {
-    return this._HttpClient.post<ISignin>('',data)
+  login(data: ISignin): Observable<IResponse<string>> {
+    return this._HttpClient.post<IResponse<string>>('LoginUserEndPoint', data);
   }
 
-}
+  register(data: IRegister): Observable<IResponse<number>> {
+    return this._HttpClient.post<IResponse<number>>('RegisterUserEndPoint', data);
+  }
 
+  forgetPassword(data: IForgetPassword): Observable<IResponse<boolean>> {
+    return this._HttpClient.post<IResponse<boolean>>('ForgetPasswordEndPoint', data);
+  }
+
+  resetPassword(data: IResetPassword): Observable<IResponse<boolean>> {
+    return this._HttpClient.post<IResponse<boolean>>('RestPasswordEndPoint', data);
+  }
+
+  changePassword(data: IChangePassword): Observable<IResponse<boolean>> {
+    return this._HttpClient.post<IResponse<boolean>>('ChangePasswordEndPoint', data);
+  }
+}

@@ -9,23 +9,21 @@ import { SharedModule } from './shared/shared.module';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     {
-      provide : HTTP_INTERCEPTORS,
-      useClass : GlobalInterceptor,
-      multi : true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: GlobalInterceptor,
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
