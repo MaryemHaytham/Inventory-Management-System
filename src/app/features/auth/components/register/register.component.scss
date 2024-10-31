@@ -1,4 +1,4 @@
-@import './../../../../../assets/styles/layout';
+@import "src/assets/styles/_layout.scss";
 
 figure:not(.logo-img) {
   display: flex;
@@ -8,29 +8,25 @@ figure:not(.logo-img) {
   padding: 0;
 }
 
+.eye-icon {
+  position: absolute;
+  top: 30%;
+  right: 0px;
+  z-index: 100;
+}
+
 input {
-  padding: 8px;
-  border: 1px solid #ccc !important;
-  border-radius: 4px;
-  width: 100%;
-  transition: border-color 0.3s ease;
+  border-radius: 5px;
+  border: 1px solid #ececee;
+  padding: 5px 10px;
   outline: none;
+  display: block;
+  transition: 0.3s linear;
+  width: 100%;
+
   &:focus {
-    border: 1px solid #006ec4 !important;
+    border: 1px solid #006ec4;
   }
-}
-
-button.google-signin-button {
-  border: 2px solid #a2a1a8;
-  background-color: #fff;
-  display: flex;
-  color: black;
-  align-items: center;
-}
-
-button.google-signin-button .google-icon {
-  width: 20px;
-  margin-right: 8px;
 }
 
 a {
@@ -52,14 +48,22 @@ p {
   color: #a2a1a8;
   line-height: 18px;
   font-weight: 400;
-}
-.col-md-6.col-12 {
-  width: 30%;
-  margin: 0 auto;
+  margin: 0;
+  inline-size: 30rem;
 }
 
-@media (min-width: 768px) {
-  .col-md-6.col-12 {
-    max-width: 60%;
+form {
+  margin: 0 auto;
+
+  p {
+    inline-size: unset;
   }
+}
+
+button {
+  cursor: pointer;
+}
+
+form + div p {
+  inline-size: unset;
 }

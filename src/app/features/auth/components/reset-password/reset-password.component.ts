@@ -8,7 +8,7 @@ import {
   ViewChildren,
   ViewContainerRef,
 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { DynamicPopupComponent } from 'src/app/shared/components/dynamic-popup/dynamic-popup.component';
 import { AuthService } from '../../services/auth.service';
 import { IResponse } from '../../model/auth';
@@ -22,13 +22,20 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class ResetPasswordComponent {
   resetPasswordForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required, Validators.email]),
+    newPassword: new FormControl(null, [Validators.required, Validators.minLength(8)]),
     confirmPassword: new FormControl(null, [Validators.required]),
-    newPassword: new FormControl(null, [Validators.required]),
-    digit1: new FormControl(null, Validators.required),
-    digit2: new FormControl(null, Validators.required),
-    digit3: new FormControl(null, Validators.required),
-    digit4: new FormControl(null, Validators.required),
-  });
+    digit1: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')]),
+    digit2: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')]),
+    digit3: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')]),
+    digit4: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')])
+  }, { validators: this.passwordsMatchValidator });
+
+  
+  passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
+    const newPassword = control.get('newPassword')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+    return newPassword && confirmPassword && newPassword !== confirmPassword ? { passwordsMismatch: true } : null;
+  }
 
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
   @ViewChild('popupContainer', { read: ViewContainerRef, static: true })

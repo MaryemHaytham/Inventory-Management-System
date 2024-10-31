@@ -26,6 +26,9 @@
             <input type="text" formControlName="digit3" #otpInput (input)="autoFocusNext($event, 2)" maxlength="1">
             <input type="text" formControlName="digit4" #otpInput (input)="autoFocusNext($event, 3)" maxlength="1">
           </div>
+          <div *ngIf="otpForm.invalid && otpForm.touched" class="text-danger">
+            <small *ngIf="otpForm.controls['digit1'].errors?.['required'] || otpForm.controls['digit1'].errors?.['pattern']">Each digit is required and must be a number.</small>
+          </div>
           <button type="submit" class="d-block w-100" [disabled]="otpForm.invalid">Verify</button>
         </div>
       </form>

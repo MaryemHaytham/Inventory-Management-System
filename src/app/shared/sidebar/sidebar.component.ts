@@ -42,7 +42,7 @@ export class SidebarComponent {
     {
       title: 'Manage Store',
       icon: 'fa-solid fa-sim-card',
-      link: '/dashboard/manage-store'
+      link: '/dashboard/store'
     }
   ]
 

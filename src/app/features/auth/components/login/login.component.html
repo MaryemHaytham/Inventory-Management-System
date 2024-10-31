@@ -1,7 +1,7 @@
 <section class="overflow-hidden d-flex align-items-center vh-100">
-  <div class="p-0 row align-items-center">
+  <div class="row align-items-center m-0 w-100">
     <div class="col-md-6 p-0 d-md-block d-none">
-      <figure class="m-0">
+      <figure class="m-0 p-0">
         <img src="./../../../../../assets/images/authPhoto.png" alt="authPhoto" class="w-100">
       </figure>
     </div>
@@ -21,9 +21,19 @@
           <div class="d-flex flex-column gap-2">
             <label for="email">Email Address</label>
             <input type="email" formControlName="email" name="email" id="email">
+            <div *ngIf="signinForm.controls['email'].invalid && (signinForm.controls['email'].touched || signinForm.controls['email'].dirty)" class="text-danger">
+              <small *ngIf="signinForm.controls['email'].errors?.['required']">Email is required.</small>
+              <small *ngIf="signinForm.controls['email'].errors?.['email']">Please enter a valid email address.</small>
+            </div>
 
             <label for="password">Password</label>
             <input type="password" name="password" formControlName="password" id="password">
+            <div *ngIf="signinForm.controls['password'].invalid && (signinForm.controls['password'].touched || signinForm.controls['password'].dirty)" class="text-danger">
+              <small *ngIf="signinForm.controls['password'].errors?.['required']">Password is required.</small>
+              <small *ngIf="signinForm.controls['password'].errors?.['pattern']">
+                Password must contain at least 8 characters, including uppercase, lowercase, number, and special character.
+              </small>
+            </div>
           </div>
           <div class="d-flex align-items-center justify-content-between">
             <p>Did you forgot your password ?</p>

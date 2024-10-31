@@ -12,7 +12,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class ForgotPasswordComponent {
   ForgetPasswordForm: FormGroup = new FormGroup({
-    email: new FormControl(null, Validators.required),
+    email: new FormControl(null, [Validators.required, Validators.email]),
+
   });
   constructor(private _Router: Router, private _AuthService: AuthService) {}
 
