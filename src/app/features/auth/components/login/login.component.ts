@@ -1,9 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { IResponse, ISignin } from '../../model/auth';
+import { HelperService } from 'src/app/shared/service/helper.service';
 
 @Component({
   selector: 'app-login',
@@ -22,12 +23,15 @@ export class LoginComponent {
   });
 
   constructor(private _AuthService: AuthService, private router: Router) {}
+  private _HelperService = inject(HelperService);
 
   onSubmit(data: FormGroup) {
     this._AuthService.login(data.value).subscribe({
       next: (res: IResponse<string>) => console.log(res),
-      error: (error: HttpErrorResponse) => console.log(error),
-      complete: () => {  },
+      error: (error: HttpErrorResponse) => this._HelperService.error(error),
+      complete: () => { 
+        this._HelperService.success('Welcome Back');
+       },
     });
   }
 }

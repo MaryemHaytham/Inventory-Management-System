@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { IResponse } from '../../model/auth';
 import { HttpErrorResponse } from '@angular/common/http';
+import { HelperService } from 'src/app/shared/service/helper.service';
 
 @Component({
   selector: 'app-register',
@@ -25,13 +26,18 @@ export class RegisterComponent {
       ]]
     });
   }
+  private _HelperService = inject(HelperService);
 
+
+  
   onSubmit(form: FormGroup) {
     if (form.valid) {
       this._AuthService.register(form.value).subscribe({
         next: (res: IResponse<number>) => console.log(res),
-        error: (error: HttpErrorResponse) => console.log(error),
-        complete: () => {  }
+        error: (error: HttpErrorResponse) => this._HelperService.error(error),
+        complete: () => { 
+          this._HelperService.success('Welcome Back');
+         },
       })
     }
   }

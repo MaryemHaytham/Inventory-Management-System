@@ -13,6 +13,7 @@ import { DynamicPopupComponent } from 'src/app/shared/components/dynamic-popup/d
 import { AuthService } from '../../services/auth.service';
 import { IResponse } from '../../model/auth';
 import { HttpErrorResponse } from '@angular/common/http';
+import { HelperService } from 'src/app/shared/service/helper.service';
 
 @Component({
   selector: 'app-reset-password',
@@ -53,6 +54,8 @@ export class ResetPasswordComponent {
       }
     }
   }
+  private _HelperService = inject(HelperService);
+
 
   onSubmit(resetPassword: FormGroup) {
     if (resetPassword.valid) {
@@ -66,8 +69,10 @@ export class ResetPasswordComponent {
       };
       this._AuthService.resetPassword(resetObj).subscribe({
         next: (res: IResponse<boolean>) => console.log(res),
-        error: (error: HttpErrorResponse) => console.log(error),
-        complete: () => {},
+        error: (error: HttpErrorResponse) => this._HelperService.error(error),
+        complete: () => { 
+          this._HelperService.success('Welcome Back');
+         },
       });
       const componentFactory =
         this._ComponentFactoryResolver.resolveComponentFactory(
