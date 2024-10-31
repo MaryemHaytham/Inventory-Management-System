@@ -5,11 +5,12 @@ import {
   HttpEvent,
   HttpInterceptor,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class GlobalInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private spinner: NgxSpinnerService) { }
 
   intercept(
     request: HttpRequest<unknown>,
@@ -22,6 +23,11 @@ export class GlobalInterceptor implements HttpInterceptor {
       url: baseUrl + request.url,
       setHeaders: { Authorization: `Bearer ${token}` },
     });
-    return next.handle(modifiedReq);
+    this.spinner.show();
+    return next.handle(modifiedReq).pipe(
+      finalize(() => {
+        this.spinner.hide();
+      })
+    );
   }
 }
