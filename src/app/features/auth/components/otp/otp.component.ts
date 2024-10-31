@@ -30,6 +30,7 @@ export class OtpComponent {
   popupContainer!: ViewContainerRef;
 
   private _ComponentFactoryResolver = inject(ComponentFactoryResolver);
+  
 
   autoFocusNext(event: Event, index: number) {
     const input = event.target as HTMLInputElement;
