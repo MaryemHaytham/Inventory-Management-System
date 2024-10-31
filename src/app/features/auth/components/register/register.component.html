@@ -21,9 +21,9 @@
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)" class="d-flex flex-column gap-3 w-75">
         <div class="d-flex flex-column ">
           <label class="mt-4" for="name">Name*</label>
-          <input type="text" placeholder="Name" formControlName="name" required>
-          <div *ngIf="registerForm.controls['name'].invalid && (registerForm.controls['name'].touched || registerForm.controls['name'].dirty)" class="text-danger">
-            <small *ngIf="registerForm.controls['name'].errors?.['required']">Name is required.</small>
+          <input type="text" placeholder="Name" formControlName="userName" required>
+          <div *ngIf="registerForm.controls['userName'].invalid && (registerForm.controls['userName'].touched || registerForm.controls['userName'].dirty)" class="text-danger">
+            <small *ngIf="registerForm.controls['userName'].errors?.['required']">Name is required.</small>
           </div>
           <label class="mt-4" for="name">Email*</label>
           <input  type="email" placeholder="Email" formControlName="email" required>
@@ -38,7 +38,18 @@
       <small *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters.</small>
       <small *ngIf="registerForm.controls['password'].errors?.['pattern']">Password must include an uppercase letter, lowercase letter, number, and special character.</small>
     </div>
-          <p class="mt-2">Must be at least 8 characters.</p>
+          <p class="my-2">Must be at least 8 characters.</p>
+          <div>
+            <label for="confirmPassword">Confirm password</label>
+            <input type="password" class="w-100" formControlName="confirmPassword" id="confirmPassword"
+              name="confirmPassword">
+              <small *ngIf="registerForm.errors?.['passwordsMismatch'] && registerForm.controls['confirmPassword'].touched" class="text-danger">
+                Passwords do not match.
+              </small>
+          </div>
+
+          
+         
           
         </div>
         <button type="submit" class="d-block w-100">Register</button>

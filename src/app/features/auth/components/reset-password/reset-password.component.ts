@@ -14,6 +14,7 @@ import { AuthService } from '../../services/auth.service';
 import { IResponse } from '../../model/auth';
 import { HttpErrorResponse } from '@angular/common/http';
 import { HelperService } from 'src/app/shared/service/helper.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -55,6 +56,7 @@ export class ResetPasswordComponent {
     }
   }
   private _HelperService = inject(HelperService);
+  private _Router = inject(Router);
 
 
   onSubmit(resetPassword: FormGroup) {
@@ -71,7 +73,10 @@ export class ResetPasswordComponent {
         next: (res: IResponse<boolean>) => console.log(res),
         error: (error: HttpErrorResponse) => this._HelperService.error(error),
         complete: () => { 
+          this._Router.navigate(['/dashboard/store'])
+
           this._HelperService.success('Welcome Back');
+          
          },
       });
       const componentFactory =
