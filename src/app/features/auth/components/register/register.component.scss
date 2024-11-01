@@ -67,3 +67,24 @@ button {
 form + div p {
   inline-size: unset;
 }
+.password-container {
+  margin-bottom: 20px;
+}
+
+.input-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon-wrapper input {
+  width: 100%;
+  padding-right: 35px; /* Space for the eye icon */
+}
+
+.show-password {
+  position: absolute;
+  right: 10px; /* Aligns the eye icon on the right side */
+  cursor: pointer;
+  color: #888;
+}

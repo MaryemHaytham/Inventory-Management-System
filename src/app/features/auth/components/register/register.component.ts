@@ -18,6 +18,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
+  showPassword: boolean = false;
+  showConfirmPassword: boolean = false;
   registerForm: FormGroup;
 
   private _AuthService = inject(AuthService);

@@ -28,6 +28,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
+  showNewPassword: boolean = false;
+  showConfirmPassword: boolean = false;
   resetPasswordForm: FormGroup = new FormGroup(
     {
       email: new FormControl(null, [Validators.required, Validators.email]),

@@ -25,6 +25,10 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./change-password.component.scss'],
 })
 export class ChangePasswordComponent {
+  showOldPassword = false;
+showNewPassword = false;
+showConfirmPassword = false;
+
   changePasswordForm: FormGroup = new FormGroup(
     {
       email: new FormControl(null, [Validators.required, Validators.email]),

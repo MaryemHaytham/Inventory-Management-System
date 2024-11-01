@@ -68,3 +68,20 @@ button {
 form + div p {
   inline-size: unset;
 }
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-container input {
+  width: 100%;
+  padding-right: 30px;
+}
+
+.password-container .show-password {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #888;
+}

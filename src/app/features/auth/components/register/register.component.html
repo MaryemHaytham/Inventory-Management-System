@@ -31,22 +31,37 @@
             <small *ngIf="registerForm.controls['email'].errors?.['required']">Email is required.</small>
             <small *ngIf="registerForm.controls['email'].errors?.['email']">Enter a valid email address.</small>
           </div>
-          <label class="mt-4"  for="name">Password*</label>
-          <input type="password" placeholder="Password" formControlName="password" required>
-           <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty)" class="text-danger">
-      <small *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</small>
-      <small *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters.</small>
-      <small *ngIf="registerForm.controls['password'].errors?.['pattern']">Password must include an uppercase letter, lowercase letter, number, and special character.</small>
-    </div>
-          <p class="my-2">Must be at least 8 characters.</p>
-          <div>
-            <label for="confirmPassword">Confirm password</label>
-            <input type="password" class="w-100" formControlName="confirmPassword" id="confirmPassword"
-              name="confirmPassword">
-              <small *ngIf="registerForm.errors?.['passwordsMismatch'] && registerForm.controls['confirmPassword'].touched" class="text-danger">
-                Passwords do not match.
-              </small>
-          </div>
+         <!-- Password Field with Eye Icon -->
+<div class="password-container">
+  <label class="mt-4" for="password">Password*</label>
+  <div class="input-icon-wrapper">
+    <input [type]="showPassword ? 'text' : 'password'" placeholder="Password" formControlName="password" required>
+    <a class="show-password" (click)="showPassword = !showPassword">
+      <i class="fa-solid" [class]="showPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+    </a>
+  </div>
+  <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].touched || registerForm.controls['password'].dirty)" class="text-danger">
+    <small *ngIf="registerForm.controls['password'].errors?.['required']">Password is required.</small>
+    <small *ngIf="registerForm.controls['password'].errors?.['minlength']">Password must be at least 8 characters.</small>
+    <small *ngIf="registerForm.controls['password'].errors?.['pattern']">Password must include an uppercase letter, lowercase letter, number, and special character.</small>
+  </div>
+  <p class="my-2">Must be at least 8 characters.</p>
+</div>
+
+<!-- Confirm Password Field with Eye Icon -->
+<div class="password-container">
+  <label for="confirmPassword">Confirm password</label>
+  <div class="input-icon-wrapper">
+    <input [type]="showConfirmPassword ? 'text' : 'password'" class="w-100" formControlName="confirmPassword" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password">
+    <a class="show-password" (click)="showConfirmPassword = !showConfirmPassword">
+      <i class="fa-solid" [class]="showConfirmPassword ? 'fa-eye' : 'fa-eye-slash'"></i>
+    </a>
+  </div>
+  <small *ngIf="registerForm.errors?.['passwordsMismatch'] && registerForm.controls['confirmPassword'].touched" class="text-danger">
+    Passwords do not match.
+  </small>
+</div>
+
 
           
          

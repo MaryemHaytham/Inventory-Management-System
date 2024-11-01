@@ -20,14 +20,19 @@
         <div class="d-flex flex-column gap-3">
           <div class="d-flex flex-column gap-2">
             <label for="email">Email Address</label>
-            <input type="email" formControlName="email" name="email" id="email">
+            <input type="email" formControlName="email" name="email" id="email" placeholder="Enter Email Address">
             <div *ngIf="signinForm.controls['email'].invalid && (signinForm.controls['email'].touched || signinForm.controls['email'].dirty)" class="text-danger">
               <small *ngIf="signinForm.controls['email'].errors?.['required']">Email is required.</small>
               <small *ngIf="signinForm.controls['email'].errors?.['email']">Please enter a valid email address.</small>
             </div>
 
             <label for="password">Password</label>
-            <input type="password" name="password" formControlName="password" id="password">
+           <div  class="password-container">
+            <input [type]="hide?'password':'text'" name="password" formControlName="password" id="password" placeholder="Enter Password">
+            <a class="show-password" (click)="hide = !hide">
+              <i class="fa-solid" [class]="hide ? 'fa-eye-slash' : 'fa-eye'"></i>
+            </a>
+           </div>
             <div *ngIf="signinForm.controls['password'].invalid && (signinForm.controls['password'].touched || signinForm.controls['password'].dirty)" class="text-danger">
               <small *ngIf="signinForm.controls['password'].errors?.['required']">Password is required.</small>
               <small *ngIf="signinForm.controls['password'].errors?.['pattern']">
