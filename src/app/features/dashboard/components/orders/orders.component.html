@@ -1,160 +1,159 @@
 <section>
-    <div class="row g-3">
-        <div class="col-lg-12 col-md-6">
-            <div
-                class="box h-100 d-flex flex-column gap-2 flex-wrap p-3 rounded-2 bg-white w-100 justify-content-between">
-                <div class="header">
-                    <h3>Overall Orders</h3>
-                </div>
-                <div class="details">
-                    <ul
-                        class="p-0 d-flex align-items-center justify-content-between m-0 flex-md-row flex-column gap-md-2 gap-4 flex-wrap">
-                        <li class="d-flex gap-3 flex-column align-items-center">
-                            <figure>
-                                <h6 class="text-blue">Total Orders</h6>
-                            </figure>
-                            <div class="d-flex justify-content-between align-items-center w-100 gap-4">
-                                <p class="nums">14</p>
-                            </div>
-                            <p class="text">Last 7 days</p>
-                        </li>
-                        <li class="d-flex gap-3 flex-column ">
-                            <figure>
-                                <h6 class="text-orange">Total Received</h6>
-                            </figure>
-                            <div class="d-flex flex-column align-items-center">
-                                <div class="d-flex justify-content-between w-100 gap-4">
-                                    <p class="nums">14</p>
-                                    <p class="nums">₹ 832</p>
-                                </div>
-                                <div class="d-flex justify-content-between w-100 gap-4">
-                                    <p class="text">Revenue</p>
-                                    <p class="text">Last 7 days</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex gap-3 flex-column ">
-                            <figure>
-                                <h6 class="text-purple">Total Returned</h6>
-                            </figure>
-                            <div class="d-flex flex-column align-items-center">
-                                <div class="d-flex justify-content-between w-100 gap-4">
-                                    <p class="nums">14</p>
-                                    <p class="nums">₹ 832</p>
-                                </div>
-                                <div class="d-flex justify-content-between w-100 gap-4">
-                                    <p class="text">Revenue</p>
-                                    <p class="text">Last 7 days</p>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="d-flex gap-3 flex-column">
-                            <figure>
-                                <h6 class="text-danger">On the way</h6>
-                            </figure>
-                            <div class="d-flex flex-column align-items-center">
-                                <div class="d-flex justify-content-between w-100 gap-4">
-                                    <p class="nums">14</p>
-                                    <p class="nums">₹ 832</p>
-                                </div>
-                                <div class="d-flex justify-content-between w-100 gap-4">
-                                    <p class="text">Revenue</p>
-                                    <p class="text">Last 7 days</p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  <div class="row g-3">
+    <div class="col-lg-12 col-md-6">
+      <div class="box h-100 d-flex flex-column gap-2 flex-wrap p-3 rounded-2 bg-white w-100 justify-content-between">
+        <div class="header">
+          <h3>Overall Orders</h3>
         </div>
-
-
-        <div class="col-lg-12 col-md-6">
-            <div class="box h-100 d-flex flex-column gap-2 p-3 rounded-2 bg-white w-100 gap-4">
-                <div class="header d-flex align-items-center justify-content-md-between flex-md-row flex-column gap-md-0 gap-0">
-                    <h3>Products</h3>
-                    <div class="d-flex align-items-center gap-3">
-                        <button (click)="openNewOrderDialog()" >Add Product</button>
-                        <button >Filters</button>
-                        <button >Download all</button>
-                    </div>
+        <div class="details">
+          <ul
+            class="p-0 d-flex align-items-center justify-content-between m-0 flex-md-row flex-column gap-md-2 gap-4 flex-wrap">
+            <li class="d-flex gap-3 flex-column align-items-center">
+              <figure>
+                <h6 class="text-blue">Total Orders</h6>
+              </figure>
+              <div class="d-flex justify-content-between align-items-center w-100 gap-4">
+                <p class="nums">14</p>
+              </div>
+              <p class="text">Last 7 days</p>
+            </li>
+            <li class="d-flex gap-3 flex-column ">
+              <figure>
+                <h6 class="text-orange">Total Received</h6>
+              </figure>
+              <div class="d-flex flex-column align-items-center">
+                <div class="d-flex justify-content-between w-100 gap-4">
+                  <p class="nums">14</p>
+                  <p class="nums">₹ 832</p>
                 </div>
-        
-                <div class="details">
-                    <table class="w-100 table">
-                        <thead>
-                            <tr>
-                                <th>Products</th>
-                                <th>Buying Price</th>
-                                <th>Quantity</th>
-                                <th>Threshold Value</th>
-                                <th>Expiry Date</th>
-                                <th>Availability</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Maggi</td>
-                                <td>₹430</td>
-                                <td>43 Packets</td>
-                                <td>12 Packets</td>
-                                <td>11/12/22</td>
-                                <td class="text-success">In-stock</td>
-                            </tr>
-                            <tr>
-                                <td>Vcola</td>
-                                <td>₹257</td>
-                                <td>22 Packets</td>
-                                <td>12 Packets</td>
-                                <td>21/12/22</td>
-                                <td class="text-danger">Out of stock</td>
-                            </tr>
-                            <tr>
-                                <td>Red Bull</td>
-                                <td>₹405</td>
-                                <td>36 Packets</td>
-                                <td>9 Packets</td>
-                                <td>5/12/22</td>
-                                <td class="text-success">In-stock</td>
-                            </tr>
-                            <tr>
-                                <td>Maggi</td>
-                                <td>₹430</td>
-                                <td>43 Packets</td>
-                                <td>12 Packets</td>
-                                <td>11/12/22</td>
-                                <td class="text-success">In-stock</td>
-                            </tr>
-                            <tr>
-                                <td>Vcola</td>
-                                <td>₹257</td>
-                                <td>22 Packets</td>
-                                <td>12 Packets</td>
-                                <td>21/12/22</td>
-                                <td class="text-danger">Out of stock</td>
-                            </tr>
-                            <tr>
-                                <td>Red Bull</td>
-                                <td>₹405</td>
-                                <td>36 Packets</td>
-                                <td>9 Packets</td>
-                                <td>5/12/22</td>
-                                <td class="text-success">In-stock</td>
-                            </tr>
-                        </tbody>
-                    </table>
-        
-                    <div class="d-flex justify-content-between align-items-center mt-3">
-                        <button class="btn btn-outline-secondary">Previous</button>
-                        <p class="m-0">Page 1 of 10</p>
-                        <button class="btn btn-outline-secondary">Next</button>
-                    </div>
+                <div class="d-flex justify-content-between w-100 gap-4">
+                  <p class="text">Revenue</p>
+                  <p class="text">Last 7 days</p>
                 </div>
-            </div>
+              </div>
+            </li>
+            <li class="d-flex gap-3 flex-column">
+              <figure>
+                <h6 class="text-purple">Total Returned</h6>
+              </figure>
+              <div class="d-flex flex-column align-items-center">
+                <div class="d-flex justify-content-between w-100 gap-4">
+                  <p class="nums">14</p>
+                  <p class="nums">₹ 832</p>
+                </div>
+                <div class="d-flex justify-content-between w-100 gap-4">
+                  <p class="text">Revenue</p>
+                  <p class="text">Last 7 days</p>
+                </div>
+              </div>
+            </li>
+            <li class="d-flex gap-3 flex-column">
+              <figure>
+                <h6 class="text-danger">On the way</h6>
+              </figure>
+              <div class="d-flex flex-column align-items-center">
+                <div class="d-flex justify-content-between w-100 gap-4">
+                  <p class="nums">14</p>
+                  <p class="nums">₹ 832</p>
+                </div>
+                <div class="d-flex justify-content-between w-100 gap-4">
+                  <p class="text">Revenue</p>
+                  <p class="text">Last 7 days</p>
+                </div>
+              </div>
+            </li>
+          </ul>
         </div>
-        
-
+      </div>
     </div>
+
+
+    <div class="col-lg-12 col-md-6">
+      <div class="box h-100 d-flex flex-column gap-2 p-3 rounded-2 bg-white w-100 gap-4">
+        <div class="header d-flex align-items-center justify-content-md-between flex-md-row flex-column gap-md-0 gap-0">
+          <h3>Products</h3>
+          <div class="d-flex align-items-center gap-3">
+            <button (click)="openNewOrderDialog()">Add Product</button>
+            <button class="basic-btn">Filters</button>
+            <button class="basic-btn">Download all</button>
+          </div>
+        </div>
+
+        <div class="details">
+          <table class="w-100 table">
+            <thead>
+              <tr>
+                <th>Products</th>
+                <th>Buying Price</th>
+                <th>Quantity</th>
+                <th>Threshold Value</th>
+                <th>Expiry Date</th>
+                <th>Availability</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maggi</td>
+                <td>₹430</td>
+                <td>43 Packets</td>
+                <td>12 Packets</td>
+                <td>11/12/22</td>
+                <td class="text-success">In-stock</td>
+              </tr>
+              <tr>
+                <td>Vcola</td>
+                <td>₹257</td>
+                <td>22 Packets</td>
+                <td>12 Packets</td>
+                <td>21/12/22</td>
+                <td class="text-danger">Out of stock</td>
+              </tr>
+              <tr>
+                <td>Red Bull</td>
+                <td>₹405</td>
+                <td>36 Packets</td>
+                <td>9 Packets</td>
+                <td>5/12/22</td>
+                <td class="text-success">In-stock</td>
+              </tr>
+              <tr>
+                <td>Maggi</td>
+                <td>₹430</td>
+                <td>43 Packets</td>
+                <td>12 Packets</td>
+                <td>11/12/22</td>
+                <td class="text-success">In-stock</td>
+              </tr>
+              <tr>
+                <td>Vcola</td>
+                <td>₹257</td>
+                <td>22 Packets</td>
+                <td>12 Packets</td>
+                <td>21/12/22</td>
+                <td class="text-danger">Out of stock</td>
+              </tr>
+              <tr>
+                <td>Red Bull</td>
+                <td>₹405</td>
+                <td>36 Packets</td>
+                <td>9 Packets</td>
+                <td>5/12/22</td>
+                <td class="text-success">In-stock</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="d-flex justify-content-between align-items-center mt-3">
+            <button class="btn btn-outline-secondary">Previous</button>
+            <p class="m-0">Page 1 of 10</p>
+            <button class="btn btn-outline-secondary">Next</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
 
 
 </section>

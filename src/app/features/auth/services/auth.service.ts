@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   resetPassword(data: IResetPassword): Observable<IResponse<boolean>> {
-    return this._HttpClient.post<IResponse<boolean>>('RestPasswordEndPoint', data);
+    return this._HttpClient.post<IResponse<boolean>>('ResetPasswordEndPoint', data);
   }
 
   changePassword(data: IChangePassword): Observable<IResponse<boolean>> {

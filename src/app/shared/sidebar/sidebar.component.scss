@@ -1,5 +1,14 @@
-.cursor{
-    cursor: pointer;
+
+.item {
+  cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.activated-item-data {
+  > * {
+    color: #1570ef;
+  }
+
 }
 
 
@@ -9,4 +18,8 @@
 
 section {
   width: 16.8%;
+}
+
+> * {
+  margin: 0;
 }

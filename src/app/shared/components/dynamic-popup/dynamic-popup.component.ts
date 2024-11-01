@@ -1,10 +1,17 @@
-import { Component, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 import { HelperService } from '../../service/helper.service';
 
 @Component({
   selector: 'app-dynamic-popup',
   templateUrl: './dynamic-popup.component.html',
-  styleUrls: ['./dynamic-popup.component.scss']
+  styleUrls: ['./dynamic-popup.component.scss'],
 })
 export class DynamicPopupComponent {
   @Output() close: EventEmitter<void> = new EventEmitter<void>();
@@ -27,7 +34,12 @@ export class DynamicPopupComponent {
   }
 
   handleWindowClick(event: MouseEvent): void {
-    this._HelperService.mouseEvent(event, 'dynamic-popup', 'popup', this.onClose.bind(this));
+    this._HelperService.mouseEvent(
+      event,
+      'dynamic-popup',
+      'popup',
+      this.onClose.bind(this)
+    );
   }
 
   handleEscapeKey(event: KeyboardEvent): void {
