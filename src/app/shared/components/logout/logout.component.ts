@@ -13,7 +13,7 @@ export class LogoutComponent {
 
   logOut() {
     localStorage.clear();
-    this.router.navigate(['/auth'])
+    this.router.navigate(['/login'])
   }
   onCancel() {
     this.dialogRef.close();
