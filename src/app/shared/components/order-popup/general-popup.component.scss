@@ -1,18 +1,22 @@
-@import './../../../../assets/styles/layout';
+@import "./../../../../assets/styles/layout";
 
 ::ng-deep .dialog-content {
-    padding: 24px;
-  }
-  
-  ::ng-deep .dialog-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 8px;
-    padding: 16px 24px;
-  }
-  .btn-danger{
-    background-color: rgb(242, 242, 242);
-    color:black;
+  padding: 24px;
+}
 
+::ng-deep .dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 16px 24px;
+}
+.btn-danger {
+  background-color: rgb(242, 242, 242);
+  color: black;
+}
+
+:ng-deep {
+  .cdk-overlay-dark-backdrop {
+    background-color: #D0D3D9 !important;
   }
-  
+}

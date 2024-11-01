@@ -8,7 +8,13 @@ import {
   ViewChildren,
   ViewContainerRef,
 } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  FormControl,
+  FormGroup,
+  ValidationErrors,
+  Validators,
+} from '@angular/forms';
 import { DynamicPopupComponent } from 'src/app/shared/components/dynamic-popup/dynamic-popup.component';
 import { AuthService } from '../../services/auth.service';
 import { IResponse } from '../../model/auth';
@@ -22,21 +28,40 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset-password.component.scss'],
 })
 export class ResetPasswordComponent {
-  resetPasswordForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
-    newPassword: new FormControl(null, [Validators.required, Validators.minLength(8)]),
-    confirmPassword: new FormControl(null, [Validators.required]),
-    digit1: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')]),
-    digit2: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')]),
-    digit3: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')]),
-    digit4: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]$')])
-  }, { validators: this.passwordsMatchValidator });
+  resetPasswordForm: FormGroup = new FormGroup(
+    {
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      newPassword: new FormControl(null, [
+        Validators.required,
+        Validators.minLength(8),
+      ]),
+      confirmPassword: new FormControl(null, [Validators.required]),
+      digit1: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+      ]),
+      digit2: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+      ]),
+      digit3: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+      ]),
+      digit4: new FormControl(null, [
+        Validators.required,
+        Validators.pattern('^[0-9]$'),
+      ]),
+    },
+    { validators: this.passwordsMatchValidator }
+  );
 
-  
   passwordsMatchValidator(control: AbstractControl): ValidationErrors | null {
     const newPassword = control.get('newPassword')?.value;
     const confirmPassword = control.get('confirmPassword')?.value;
-    return newPassword && confirmPassword && newPassword !== confirmPassword ? { passwordsMismatch: true } : null;
+    return newPassword && confirmPassword && newPassword !== confirmPassword
+      ? { passwordsMismatch: true }
+      : null;
   }
 
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
@@ -58,7 +83,6 @@ export class ResetPasswordComponent {
   private _HelperService = inject(HelperService);
   private _Router = inject(Router);
 
-
   onSubmit(resetPassword: FormGroup) {
     if (resetPassword.valid) {
       let resetObj = {
@@ -72,22 +96,20 @@ export class ResetPasswordComponent {
       this._AuthService.resetPassword(resetObj).subscribe({
         next: (res: IResponse<boolean>) => console.log(res),
         error: (error: HttpErrorResponse) => this._HelperService.error(error),
-        complete: () => { 
-          this._Router.navigate(['/dashboard/store'])
-
-          this._HelperService.success('Welcome Back');
-          
-         },
+        complete: () => {
+          const componentFactory =
+            this._ComponentFactoryResolver.resolveComponentFactory(
+              DynamicPopupComponent
+            );
+          this.popupContainer.clear();
+          const componentRef =
+            this.popupContainer.createComponent(componentFactory);
+          componentRef.instance.close.subscribe(() =>
+            this.popupContainer.clear()
+          );
+          componentRef.setInput('valueToBeVisible', 'forget');
+        },
       });
-      const componentFactory =
-        this._ComponentFactoryResolver.resolveComponentFactory(
-          DynamicPopupComponent
-        );
-      this.popupContainer.clear();
-      const componentRef =
-        this.popupContainer.createComponent(componentFactory);
-      componentRef.instance.close.subscribe(() => this.popupContainer.clear());
-      componentRef.setInput('valueToBeVisible', 'Forget Password');
     }
   }
 }

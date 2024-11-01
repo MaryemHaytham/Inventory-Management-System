@@ -21,10 +21,10 @@ const routes: Routes = [
         component: InventoryComponent,
         children: [
           { path: 'inventory', component: InventoryComponent, title: 'inventory' },
-        
+
         ],
       },
-      { path: 'product-info', component: ProductInfoComponent, title: 'productInfo' },
+      { path: 'product-info/:id', component: ProductInfoComponent, title: 'productInfo' },
       { path: 'store', component: StoreComponent, title: 'store' },
       { path: 'reports', component: ReportsComponent, title: 'reports' }
 
