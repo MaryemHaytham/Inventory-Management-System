@@ -17,6 +17,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { GeneralPopupComponent } from './components/order-popup/general-popup.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { InventoryPopupComponent } from './components/inventory-popup/inventory-popup.component';
+import { LogoutComponent } from './components/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { InventoryPopupComponent } from './components/inventory-popup/inventory-
     SidebarComponent,
     GeneralPopupComponent,
     InventoryPopupComponent,
+    LogoutComponent,
   ],
   imports: [
     CommonModule,
