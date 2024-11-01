@@ -1,5 +1,12 @@
 .item {
   cursor: pointer;
+  transition: 0.3s linear;
+}
+
+.activated-item-data {
+  > * {
+    color: #1570ef;
+  }
 }
 
 .bgActiveImg:hover {
@@ -8,4 +15,8 @@
 
 section {
   width: 16.8%;
+}
+
+> * {
+  margin: 0;
 }
