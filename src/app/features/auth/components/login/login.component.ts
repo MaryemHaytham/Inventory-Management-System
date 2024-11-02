@@ -29,7 +29,10 @@ export class LoginComponent {
 
   onSubmit(data: FormGroup) {
     this._AuthService.login(data.value).subscribe({
-      next: (res: IResponse<string>) => console.log(res),
+      next: (res: IResponse<string>) => {
+        console.log(res);
+        // localStorage.setItem('token',res)
+      },
       error: (error: HttpErrorResponse) => this._HelperService.error(error),
       complete: () => {
         this._HelperService.success('Welcome Back');
