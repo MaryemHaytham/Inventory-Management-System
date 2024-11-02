@@ -15,6 +15,7 @@ export class LogoutComponent {
     localStorage.clear();
     this.router.navigate(['/login'])
   }
+  
   onCancel() {
     this.dialogRef.close();
   }

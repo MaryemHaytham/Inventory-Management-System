@@ -26,4 +26,6 @@ export class InventoryComponent {
       data: {},
     });
   }
+
+  
 }
