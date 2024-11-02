@@ -24,8 +24,9 @@ export class LoginComponent {
     ]),
   });
 
-  constructor(private _AuthService: AuthService, private router: Router) {}
+  constructor(private _AuthService: AuthService, private router: Router) { }
   private _HelperService = inject(HelperService);
+
 
   onSubmit(data: FormGroup) {
     this._AuthService.login(data.value).subscribe({
@@ -33,6 +34,8 @@ export class LoginComponent {
         console.log(res);
         // localStorage.setItem('token',res)
       },
+      next: (res: IResponse<string>) => localStorage.setItem('userToken', res.data)
+      ,
       error: (error: HttpErrorResponse) => this._HelperService.error(error),
       complete: () => {
         this._HelperService.success('Welcome Back');
