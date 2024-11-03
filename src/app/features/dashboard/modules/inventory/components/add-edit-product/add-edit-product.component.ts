@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-edit-product',
@@ -8,9 +8,20 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 })
 export class AddEditProductComponent implements OnInit, OnDestroy {
   @Output() close = new EventEmitter<void>();
+  productForm: FormGroup;
 
-  onClose(): void {
-    this.close.emit();
+  constructor(private fb: FormBuilder) {
+    // Initialize form group with controls and validators
+    this.productForm = this.fb.group({
+      productName: ['', [Validators.required, Validators.minLength(3)]],
+      productId: ['', [Validators.required]],
+      category: ['', [Validators.required]],
+      buyingPrice: ['', [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)]],
+      quantity: ['', [Validators.required, Validators.min(1)]],
+      unit: ['', [Validators.required]],
+      expiryDate: ['', Validators.required],
+      thresholdValue: ['', [Validators.required, Validators.min(1)]]
+    });
   }
 
   ngOnInit(): void {
@@ -23,6 +34,10 @@ export class AddEditProductComponent implements OnInit, OnDestroy {
     window.removeEventListener('keydown', this.handleEscapeKey.bind(this));
   }
 
+  onClose(): void {
+    this.close.emit();
+  }
+
   handleWindowClick(event: MouseEvent): void {
     const popupElement = document.querySelector('.popup');
     if (popupElement && !popupElement.contains(event.target as Node)) {
@@ -33,6 +48,15 @@ export class AddEditProductComponent implements OnInit, OnDestroy {
   handleEscapeKey(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       this.onClose();
+    }
+  }
+
+  onSubmit(): void {
+    if (this.productForm.valid) {
+      console.log('Form submitted:', this.productForm.value);
+      this.onClose();
+    } else {
+      this.productForm.markAllAsTouched();
     }
   }
 }
