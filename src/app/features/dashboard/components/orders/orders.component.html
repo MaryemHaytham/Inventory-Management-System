@@ -92,53 +92,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Maggi</td>
-                <td>₹430</td>
+              <tr *ngFor="let item of listData">
+                <td> {{ item.products }} </td>
+                <!-- <td>₹430</td>
                 <td>43 Packets</td>
                 <td>12 Packets</td>
                 <td>11/12/22</td>
-                <td class="text-success">In-stock</td>
-              </tr>
-              <tr>
-                <td>Vcola</td>
-                <td>₹257</td>
-                <td>22 Packets</td>
-                <td>12 Packets</td>
-                <td>21/12/22</td>
-                <td class="text-danger">Out of stock</td>
-              </tr>
-              <tr>
-                <td>Red Bull</td>
-                <td>₹405</td>
-                <td>36 Packets</td>
-                <td>9 Packets</td>
-                <td>5/12/22</td>
-                <td class="text-success">In-stock</td>
-              </tr>
-              <tr>
-                <td>Maggi</td>
-                <td>₹430</td>
-                <td>43 Packets</td>
-                <td>12 Packets</td>
-                <td>11/12/22</td>
-                <td class="text-success">In-stock</td>
-              </tr>
-              <tr>
-                <td>Vcola</td>
-                <td>₹257</td>
-                <td>22 Packets</td>
-                <td>12 Packets</td>
-                <td>21/12/22</td>
-                <td class="text-danger">Out of stock</td>
-              </tr>
-              <tr>
-                <td>Red Bull</td>
-                <td>₹405</td>
-                <td>36 Packets</td>
-                <td>9 Packets</td>
-                <td>5/12/22</td>
-                <td class="text-success">In-stock</td>
+                <td class="text-success">In-stock</td> -->
+                <td> {{ item.price }} </td>
+                <td> {{ item.quantity }} </td>
+                <td> {{ item.threshold }} </td>
+                <td> {{ item.expiryDate }} </td>
+                <td> {{ item.availability }} </td>
               </tr>
             </tbody>
           </table>

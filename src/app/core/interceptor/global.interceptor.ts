@@ -18,7 +18,7 @@ export class GlobalInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<unknown>> {
     const baseUrl: string =
       'https://apis004-001-site1.etempurl.com/';
-    const token: string = localStorage.getItem('token') ?? '';
+    const token: string = String(localStorage.getItem('userToken'));
     const modifiedReq = request.clone({
       url: baseUrl + request.url,
       setHeaders: { Authorization: `Bearer ${token}` },
