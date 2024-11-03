@@ -34,8 +34,6 @@ export class LoginComponent {
         console.log(res);
         localStorage.setItem('token',res.data)
       },
-      next: (res: IResponse<string>) => localStorage.setItem('userToken', res.data)
-      ,
       error: (error: HttpErrorResponse) => this._HelperService.error(error),
       complete: () => {
         this._HelperService.success('Welcome Back');
