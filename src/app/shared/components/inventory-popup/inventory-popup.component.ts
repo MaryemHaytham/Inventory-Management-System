@@ -32,7 +32,6 @@ export class InventoryPopupComponent {
     const file = event.target.files[0];
     if (file) {
       this.imageName = file.name;
-      // Handle file upload here if needed
     }
   }
 
@@ -45,7 +44,6 @@ export class InventoryPopupComponent {
     const files = event.dataTransfer?.files;
     if (files && files.length > 0) {
       this.imageName = files[0].name;
-      // Handle file upload here if needed
     }
   }
 
@@ -58,7 +56,6 @@ export class InventoryPopupComponent {
 
   onSubmit() {
     if (this.newOrderForm.valid) {
-      // Handle form submission logic here
       this.dialogRef.close(this.newOrderForm.value);
     }
   }

@@ -98,21 +98,5 @@ th {
 
 tr {
   overflow-x: hidden;
-  .eye-icon {
-    right: -20%;
-    top: 0;
-    background-color: transparent;
-    transition: 0.3s linear;
-    cursor: pointer;
-
-    i {
-      color: #aa3028;
-    }
-  }
-
-  &:hover {
-    .eye-icon {
-      right: 2%;
-    }
-  }
+  cursor: pointer;
 }

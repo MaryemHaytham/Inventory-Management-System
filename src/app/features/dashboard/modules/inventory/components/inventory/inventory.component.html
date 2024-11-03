@@ -96,54 +96,18 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="position-relative" #trData *ngFor="let item of listProduct">
-                <td>{{item}}</td>
-                <td>{{item}}</td>
-                <td>{{item}}</td>
-                <td>{{item}}</td>
-                <td>{{item}}</td>
-                <td class="text-success">In-stock</td>
+              <tr *ngFor="let product of listData; let i = index" class="position-relative"
+                (click)="navigateToProductInfo(i)">
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.quantity }}</td>
+                <td>{{ product.threshold }}</td>
+                <td>{{ product.expiryDate }}</td>
+                <td
+                  [ngClass]="{'text-danger': product.availability === 'Out of stock', 'text-success': product.availability === 'In-stock'}">
+                  {{ product.availability }}
+                </td>
               </tr>
-              <!-- <tr class="position-relative" #trData>
-                <td>Vcola</td>
-                <td>₹257</td>
-                <td>22 Packets</td>
-                <td>12 Packets</td>
-                <td>21/12/22</td>
-                <td class="text-danger">Out of stock</td>
-              </tr>
-              <tr class="position-relative" #trData>
-                <td>Red Bull</td>
-                <td>₹405</td>
-                <td>36 Packets</td>
-                <td>9 Packets</td>
-                <td>5/12/22</td>
-                <td class="text-success">In-stock</td>
-              </tr>
-              <tr class="position-relative" #trData>
-                <td>Maggi</td>
-                <td>₹430</td>
-                <td>43 Packets</td>
-                <td>12 Packets</td>
-                <td>11/12/22</td>
-                <td class="text-success">In-stock</td>
-              </tr>
-              <tr class="position-relative" #trData>
-                <td>Vcola</td>
-                <td>₹257</td>
-                <td>22 Packets</td>
-                <td>12 Packets</td>
-                <td>21/12/22</td>
-                <td class="text-danger">Out of stock</td>
-              </tr>
-              <tr class="position-relative" #trData>
-                <td>Red Bull</td>
-                <td>₹405</td>
-                <td>36 Packets</td>
-                <td>9 Packets</td>
-                <td>5/12/22</td>
-                <td class="text-success">In-stock</td>
-              </tr> -->
             </tbody>
           </table>
 

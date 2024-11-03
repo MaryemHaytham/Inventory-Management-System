@@ -54,7 +54,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     DynamicPopupComponent,
     GeneralPopupComponent,
     InventoryPopupComponent,
-    MatMenuModule
+    MatMenuModule,
+    CommonModule
   ],
 })
 export class SharedModule {}
