@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { GlobalInterceptor } from './core/interceptor/global.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
+import { InventoryModule } from './features/dashboard/modules/inventory/inventory.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
+    InventoryModule,
     HttpClientModule,
     NgxSpinnerModule,
     ToastrModule.forRoot(),

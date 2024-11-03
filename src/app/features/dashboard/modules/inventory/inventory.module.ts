@@ -26,7 +26,7 @@ import { MatButtonModule } from '@angular/material/button';
     InventoryRoutingModule,
     AddEditProductComponent,
     SharedModule,
-    MatFormFieldModule 
+    MatFormFieldModule,
     
 
   ],

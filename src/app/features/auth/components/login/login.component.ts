@@ -31,7 +31,7 @@ export class LoginComponent {
     this._AuthService.login(data.value).subscribe({
       next: (res: IResponse<string>) => {
         console.log(res);
-        // localStorage.setItem('token',res)
+        localStorage.setItem('token',res.data)
       },
       error: (error: HttpErrorResponse) => this._HelperService.error(error),
       complete: () => {

@@ -96,15 +96,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="position-relative" #trData>
-                <td>Maggi</td>
-                <td>₹430</td>
-                <td>43 Packets</td>
-                <td>12 Packets</td>
-                <td>11/12/22</td>
+              <tr class="position-relative" #trData *ngFor="let item of listProduct">
+                <td>{{item}}</td>
+                <td>{{item}}</td>
+                <td>{{item}}</td>
+                <td>{{item}}</td>
+                <td>{{item}}</td>
                 <td class="text-success">In-stock</td>
               </tr>
-              <tr class="position-relative" #trData>
+              <!-- <tr class="position-relative" #trData>
                 <td>Vcola</td>
                 <td>₹257</td>
                 <td>22 Packets</td>
@@ -143,7 +143,7 @@
                 <td>9 Packets</td>
                 <td>5/12/22</td>
                 <td class="text-success">In-stock</td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
 
