@@ -1,92 +1,104 @@
 <h1 mat-dialog-title class="fw-bold">New Product</h1>
 <div mat-dialog-content class="dialog-content">
-    <div class="d-flex justify-content-center align-items-center">
-        <div class="text-center w-50">
-          <div class="image-upload" (dragover)="onDragOver($event)" (drop)="onDrop($event)">
-            <input type="file" id="imageUpload" (change)="onFileChange($event)" class="d-none" />
-            <p class="text-primary mb-0" (click)="browseFiles()">Browse Images or</p>
-            <p *ngIf="imageName">{{ imageName }}</p>
-            <p class="text-muted mb-0">Drag and drop your image.</p>
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="text-center w-50">
+      <div class="image-upload">
+        <ngx-dropzone [multiple]="false" no_multiple (change)="onSelect($event)" class="mb-0">
+          <div
+            [class]="!profileImgValue ? 'label_custom-style d-flex justify-content-center align-items-center ' : 'visually-hidden'">
+            <ngx-dropzone-label>
+              <i class="fa-solid fa-upload"></i>
+              <p class="text-center">Image</p>
+            </ngx-dropzone-label>
           </div>
-        </div>
+          <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+            [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label></ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
       </div>
-      
-  <form [formGroup]="newOrderForm" (ngSubmit)="onSubmit()" class="row gap-2 pt-3">
+    </div>
+  </div>
+
+  <form [formGroup]="newInventoryForm" (ngSubmit)="onSubmit(newInventoryForm)" class="row gap-2 pt-3">
     <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="productName" class="form-label">Product Name</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="productName" formControlName="productName" placeholder="Enter Product Name" />
-          </div>
+      <div class="row">
+        <div class="col-md-4">
+          <label for="Name" class="form-label">Product Name</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="Name" formControlName="Name"
+            placeholder="Enter Product Name" />
         </div>
       </div>
-      <div class="col-md-11 ">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="category" class="form-label">Category</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="category" formControlName="category" placeholder="Enter Category"/>
-          </div>
+    </div>
+    <div class="col-md-11 ">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="CategoryID" class="form-label">Category</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="CategoryID" formControlName="CategoryID"
+            placeholder="Enter Category" />
         </div>
       </div>
-      <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="orderValue" class="form-label">Order Value</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="orderValue" formControlName="orderValue" placeholder="Enter Order Value" />
-          </div>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="orderValue" class="form-label">Threshold</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="Threshold" formControlName="Threshold"
+            placeholder="Enter Order Value" />
         </div>
       </div>
-      <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="quantity" class="form-label">Quantity</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="quantity" placeholder="Enter Quantity" />
-          </div>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="quantity" class="form-label">Quantity</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="quantity" placeholder="Enter Quantity" formControlName="Quantity" />
         </div>
       </div>
-      <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="unit" class="form-label">Unit</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="unit" formControlName="unit" placeholder="Enter Unit" />
-          </div>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="unit" class="form-label">Unit</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="unit" formControlName="Unit" placeholder="Enter Unit" />
         </div>
       </div>
-      <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="buyingPrice" class="form-label">Buying Price</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="buyingPrice" formControlName="buyingPrice" placeholder="Enter Buying Price" />
-          </div>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="buyingPrice" class="form-label">Buying Price</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="buyingPrice" formControlName="Price"
+            placeholder="Enter Buying Price" />
         </div>
       </div>
-      <div class="col-md-11">
-        <div class="row">
-          <div class="col-md-4">
-            <label for="dateOfDelivery" class="form-label">Date of Delivery</label>
-          </div>
-          <div class="col-md-6">
-            <input type="text" class="form-control" id="dateOfDelivery" formControlName="dateOfDelivery" placeholder="Enter Date of Delivery" />
-          </div>
+    </div>
+    <div class="col-md-11">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="dateOfDelivery" class="form-label">Expiry Date</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="dateOfDelivery" formControlName="ExpiryDate"
+            placeholder="Enter Date of Delivery" />
         </div>
       </div>
+    </div>
   </form>
 </div>
 <div mat-dialog-actions class="dialog-actions">
   <button class="btn-danger mx-3" (click)="onCancel()">Discard</button>
-  <button (click)="onSubmit()">
-    Add Product
-  </button>
+
 </div>

@@ -29,4 +29,4 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
   ]
 
 })
-export class AuthModule {}
+export class AuthModule { }

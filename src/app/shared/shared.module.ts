@@ -18,6 +18,7 @@ import { GeneralPopupComponent } from './components/order-popup/general-popup.co
 import { MatDialogModule } from '@angular/material/dialog';
 import { InventoryPopupComponent } from './components/inventory-popup/inventory-popup.component';
 import { LogoutComponent } from './components/logout/logout.component';
+import { NgxDropzoneModule } from 'ngx-dropzone';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     MatButtonModule,
     MatIconModule,
     MatDialogModule,
-    MatMenuModule
+    MatMenuModule,
+    NgxDropzoneModule
   ],
   exports: [
     FormsModule,
@@ -55,7 +57,8 @@ import { LogoutComponent } from './components/logout/logout.component';
     GeneralPopupComponent,
     InventoryPopupComponent,
     MatMenuModule,
-    CommonModule
+    CommonModule,
+    NgxDropzoneModule
   ],
 })
 export class SharedModule {}
