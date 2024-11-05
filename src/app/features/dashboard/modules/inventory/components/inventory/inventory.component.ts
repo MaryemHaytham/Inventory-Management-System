@@ -17,8 +17,8 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./inventory.component.scss'],
 })
 export class InventoryComponent implements OnInit {
-  product:any;
-  listProduct:any;
+  product: any;
+  listProduct: any;
   @ViewChildren('trData') trData!: QueryList<ElementRef>;
 
   constructor(
@@ -26,7 +26,7 @@ export class InventoryComponent implements OnInit {
     private _Router: Router,
     private _InventoryService: InventoryService,
     private _HelperService: HelperService
-  ) {}
+  ) { }
 
   listData: {
     name: string;
@@ -72,5 +72,5 @@ export class InventoryComponent implements OnInit {
     this._Router.navigate([`/dashboard/product-info/${index + 1}`]);
   }
 
-  
+
 }

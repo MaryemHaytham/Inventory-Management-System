@@ -1,10 +1,10 @@
-import { Component } from "@angular/core";
+// import { Component } from "@angular/core";
 
-@Component({
-    selector: 'app-inventory',
-    template: '<router-outlet />'
-})
+// @Component({
+//     selector: 'app-inventory',
+//     template: '<router-outlet />'
+// })
 
-export class InventoryComponent {
+// export class InventoryComponent {
 
-}   
+// }   

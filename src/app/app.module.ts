@@ -21,7 +21,7 @@ import { InventoryModule } from './features/dashboard/modules/inventory/inventor
     InventoryModule,
     HttpClientModule,
     NgxSpinnerModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [
     {
