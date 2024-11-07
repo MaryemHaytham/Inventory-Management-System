@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { MatDialogRef } from '@angular/material/dialog';
 import { InventoryService } from '../../service/inventory.service';
 import { HelperService } from '../../service/helper.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-popup',
@@ -13,6 +13,9 @@ import { Router } from '@angular/router';
 export class InventoryPopupComponent {
   newOrderForm: FormGroup;
   imageName: string | any;
+  inventoryList: any;
+  inventoryId: any;
+  isUpdate: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,7 +23,8 @@ export class InventoryPopupComponent {
     public dialogRef: MatDialogRef<InventoryPopupComponent>,
     private _InventoryService: InventoryService,
     private _HelperService: HelperService,
-    private router: Router
+    private router: Router,
+    private _ActivatedRoute: ActivatedRoute
   ) {
     this.newOrderForm = this.formBuilder.group({
       productName: ['', Validators.required],
@@ -32,6 +36,18 @@ export class InventoryPopupComponent {
       buyingPrice: ['', Validators.required],
       dateOfDelivery: ['', Validators.required]
     });
+
+    // Inventory Add&Edit
+    this.imageName = _HelperService.imgPath;
+    console.log(_ActivatedRoute.snapshot.params['id']);
+    this.inventoryId = _ActivatedRoute.snapshot.params['id'];
+    if (this.inventoryId) {
+      this.isUpdate = true;
+      this.getProductById(this.inventoryId)
+    } else {
+      this.isUpdate = false;
+    }
+
   }
 
   inventoryForm = new FormGroup({
@@ -46,26 +62,37 @@ export class InventoryPopupComponent {
 
   onSubmit(data: FormGroup) {
     let myData = new FormData();
-    myData.append('Name', data.value.Name);
-    myData.append('Category', data.value.Category);
-    myData.append('Price', data.value.Price);
-    myData.append('Quantity', data.value.Quantity);
-    myData.append('Unit', data.value.Unit);
-    myData.append('ExpiryDate', data.value.ExpiryDate);
-    myData.append('Threshold', data.value.Threshold);
+    Object.keys(data.value).forEach(([key, value]) => {
+      myData.append(key, value);
+    })
     myData.append('Image', this.imageName, this.imageName.Image);
 
-    this._InventoryService.addProduct(myData).subscribe({
-      next: (res) => {
-        console.log(res);
+    if (this.inventoryId) {
+      this._InventoryService.editProduct(myData, this.inventoryId).subscribe({
+        next: (res) => {
 
-      }, error: (err) => {
-        this._HelperService.error(err)
-      }, complete: () => {
-        this._HelperService.success('Welcome Back');
-        this.router.navigate(['/dashboard/inventory']);
-      }
-    })
+        }, error: (err) => {
+          this._HelperService.error(err)
+        }, complete: () => {
+          this._HelperService.success('Product Update Success');
+          this.router.navigate(['/dashboard/inventory']);
+        }
+      })
+
+    } else {
+      this._InventoryService.addProduct(myData).subscribe({
+        next: (res) => {
+          console.log(res);
+
+        }, error: (err) => {
+          this._HelperService.error(err)
+        }, complete: () => {
+          this._HelperService.success('Product Add Success');
+          this.router.navigate(['/dashboard/inventory']);
+        }
+      })
+    }
+
   }
 
   onFileChange(event: any) {
@@ -94,11 +121,26 @@ export class InventoryPopupComponent {
     }
   }
 
-  // onSubmit() {
-  //   if (this.newOrderForm.valid) {
-  //     this.dialogRef.close(this.newOrderForm.value);
-  //   }
-  // }
+  getProductById(id: number) {
+    this._InventoryService.getProductById(id).subscribe({
+      next: (res) => {
+        this.inventoryList = res;
+      }, error: (err) => {
+
+      }, complete: () => {
+        // this.imageName = 
+        this.inventoryForm.patchValue({
+          Name: this.inventoryList.Name,
+          Category: this.inventoryList.Category,
+          Price: this.inventoryList.Price,
+          Quantity: this.inventoryList.Quantity,
+          Unit: this.inventoryList.Unit,
+          ExpiryDate: this.inventoryList.ExpiryDate,
+          Threshold: this.inventoryList.Threshold,
+        })
+      }
+    })
+  }
 
   onCancel() {
     this.dialogRef.close();

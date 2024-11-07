@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
   providedIn: 'root',
 })
 export class HelperService {
+  imgPath:string = 'https://apis004-001-site1.etempurl.com/';
   constructor(private _ToastrService: ToastrService) {}
 
   error(error: HttpErrorResponse): void {

@@ -12,4 +12,10 @@ export class InventoryService {
   addProduct(data: any): Observable<any> {
     return this._HttpClient.post('api/products', data)
   }
+  editProduct(data: any,id:number): Observable<any> {
+    return this._HttpClient.put(`api/products/${id}`, data)
+  }
+  getProductById(id:number): Observable<any> {
+    return this._HttpClient.get(`api/products/${id}`)
+  }
 }
