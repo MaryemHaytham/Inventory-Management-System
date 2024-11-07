@@ -1,26 +1,27 @@
 <h1 mat-dialog-title class="fw-bold">New Product</h1>
 <div mat-dialog-content class="dialog-content">
-  <div class="d-flex justify-content-center align-items-center">
-    <div class="text-center w-50">
-      <div class="image-upload">
-        <ngx-dropzone [multiple]="false" no_multiple (change)="onSelect($event)" class="mb-0">
-          <div
-            [class]="!profileImgValue ? 'label_custom-style d-flex justify-content-center align-items-center ' : 'visually-hidden'">
-            <ngx-dropzone-label>
-              <i class="fa-solid fa-upload"></i>
-              <p class="text-center">Image</p>
-            </ngx-dropzone-label>
-          </div>
-          <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
-            [removable]="true" (removed)="onRemove(f)">
-            <ngx-dropzone-label></ngx-dropzone-label>
-          </ngx-dropzone-image-preview>
-        </ngx-dropzone>
+ 
+  <form [formGroup]="newInventoryForm" (ngSubmit)="onSubmit(newInventoryForm)" class="row gap-2 pt-3">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-center w-50">
+        <div class="image-upload">
+          <ngx-dropzone [multiple]="false" no_multiple (change)="onSelect($event)" class="mb-0">
+            <div
+              [class]="!profileImgValue ? 'label_custom-style d-flex justify-content-center align-items-center ' : 'visually-hidden'">
+              <ngx-dropzone-label>
+                <i class="fa-solid fa-upload"></i>
+                <p class="text-center">Image</p>
+              </ngx-dropzone-label>
+            </div>
+            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+              [removable]="true" (removed)="onRemove(f)">
+              <ngx-dropzone-label></ngx-dropzone-label>
+            </ngx-dropzone-image-preview>
+          </ngx-dropzone>
+        </div>
       </div>
     </div>
-  </div>
-
-  <form [formGroup]="newInventoryForm" (ngSubmit)="onSubmit(newInventoryForm)" class="row gap-2 pt-3">
+    
     <div class="col-md-11">
       <div class="row">
         <div class="col-md-4">

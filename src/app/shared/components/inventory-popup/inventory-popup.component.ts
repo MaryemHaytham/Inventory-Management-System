@@ -65,6 +65,8 @@ export class InventoryPopupComponent {
       newOrderForm.append(key, value);
     })
 
+
+
     if (this.files.length > 0) {
       newOrderForm.append('Image', this.files[0], this.files[0].name)
     }
