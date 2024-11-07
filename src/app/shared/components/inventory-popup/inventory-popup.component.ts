@@ -142,6 +142,17 @@ export class InventoryPopupComponent {
     })
   }
 
+  // image
+  files: File[] = [];
+  onSelect(event: any) {
+    this.imageName = event.addedFiles[0];
+    this.files.push(...event.addedFiles);
+  }
+
+  onRemove(event: any) {
+    this.files.splice(this.files.indexOf(event), 1);
+  }
+
   onCancel() {
     this.dialogRef.close();
   }

@@ -11,6 +11,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { ToastrModule } from 'ngx-toastr';
 import { InventoryModule } from './features/dashboard/modules/inventory/inventory.module';
 
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
