@@ -1,34 +1,31 @@
 <h1 mat-dialog-title class="fw-bold">New Product</h1>
 <div mat-dialog-content class="dialog-content">
- 
-  <form [formGroup]="newInventoryForm" (ngSubmit)="onSubmit(newInventoryForm)" class="row gap-2 pt-3">
+  <form [formGroup]="inventoryForm" (ngSubmit)="onSubmit(inventoryForm)" class="row gap-2 pt-3">
     <div class="d-flex justify-content-center align-items-center">
       <div class="text-center w-50">
-        <div class="image-upload">
-          <ngx-dropzone [multiple]="false" no_multiple (change)="onSelect($event)" class="mb-0">
-            <div
-              [class]="!profileImgValue ? 'label_custom-style d-flex justify-content-center align-items-center ' : 'visually-hidden'">
-              <ngx-dropzone-label>
-                <i class="fa-solid fa-upload"></i>
-                <p class="text-center">Image</p>
-              </ngx-dropzone-label>
-            </div>
-            <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
-              [removable]="true" (removed)="onRemove(f)">
-              <ngx-dropzone-label></ngx-dropzone-label>
-            </ngx-dropzone-image-preview>
-          </ngx-dropzone>
-        </div>
+        <ngx-dropzone (change)="onSelect($event)" [multiple]="false" class="w-100">
+          <ngx-dropzone-label *ngIf="!imageName">
+            <i class="fa-solid fa-arrow-up-from-bracket d-block"></i>
+            Drag & Drop or <span class="text-main">Choose a Item Image</span> to Upload
+          </ngx-dropzone-label>
+          <ngx-dropzone-label *ngIf="imageName">
+            <img [src]="imageName" class="w-25" alt="">
+          </ngx-dropzone-label>
+          <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
+            [removable]="true" (removed)="onRemove(f)">
+            <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+          </ngx-dropzone-image-preview>
+        </ngx-dropzone>
       </div>
     </div>
-    
+
     <div class="col-md-11">
       <div class="row">
         <div class="col-md-4">
-          <label for="Name" class="form-label">Product Name</label>
+          <label for="productName" class="form-label">Product Name</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="Name" formControlName="Name"
+          <input type="text" class="form-control" id="productName" formControlName="Name"
             placeholder="Enter Product Name" />
         </div>
       </div>
@@ -36,10 +33,21 @@
     <div class="col-md-11 ">
       <div class="row">
         <div class="col-md-4">
-          <label for="CategoryID" class="form-label">Category</label>
+          <label for="category" class="form-label">Product ID</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="CategoryID" formControlName="CategoryID"
+          <input type="text" class="form-control" id="category" formControlName="Category"
+            placeholder="Enter Category" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-11 ">
+      <div class="row">
+        <div class="col-md-4">
+          <label for="category" class="form-label">Category</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="category" formControlName="Category"
             placeholder="Enter Category" />
         </div>
       </div>
@@ -47,11 +55,10 @@
     <div class="col-md-11">
       <div class="row">
         <div class="col-md-4">
-          <label for="orderValue" class="form-label">Threshold</label>
+          <label for="Price" class="form-label">Buying Price</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="Threshold" formControlName="Threshold"
-            placeholder="Enter Order Value" />
+          <input type="text" class="form-control" id="Price" formControlName="Price" placeholder="Enter Buying Price" />
         </div>
       </div>
     </div>
@@ -61,7 +68,8 @@
           <label for="quantity" class="form-label">Quantity</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="quantity" placeholder="Enter Quantity" formControlName="Quantity" />
+          <input type="text" class="form-control" id="quantity" placeholder="Enter Quantity"
+            formControlName="Quantity" />
         </div>
       </div>
     </div>
@@ -78,28 +86,30 @@
     <div class="col-md-11">
       <div class="row">
         <div class="col-md-4">
-          <label for="buyingPrice" class="form-label">Buying Price</label>
+          <label for="buyingPrice" class="form-label">Expiry Date</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="buyingPrice" formControlName="Price"
-            placeholder="Enter Buying Price" />
+          <input type="text" class="form-control" id="buyingPrice" formControlName="ExpiryDate"
+            placeholder="Enter Expiry Date" />
         </div>
       </div>
     </div>
     <div class="col-md-11">
       <div class="row">
         <div class="col-md-4">
-          <label for="dateOfDelivery" class="form-label">Expiry Date</label>
+          <label for="dateOfDelivery" class="form-label">Threshold Value</label>
         </div>
         <div class="col-md-6">
-          <input type="text" class="form-control" id="dateOfDelivery" formControlName="ExpiryDate"
-            placeholder="Enter Date of Delivery" />
+          <input type="text" class="form-control" id="dateOfDelivery" formControlName="Threshold"
+            placeholder="Enter Threshold Value" />
         </div>
       </div>
     </div>
+    <div mat-dialog-actions class="dialog-actions">
+      <button class="btn-danger mx-3" (click)="onCancel()">Discard</button>
+      <button>
+        Add Product
+      </button>
+    </div>
   </form>
-</div>
-<div mat-dialog-actions class="dialog-actions">
-  <button class="btn-danger mx-3" (click)="onCancel()">Discard</button>
-
 </div>

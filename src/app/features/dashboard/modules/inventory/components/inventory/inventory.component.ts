@@ -1,8 +1,9 @@
-import { Component, ElementRef, QueryList, ViewChildren } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InventoryPopupComponent } from 'src/app/shared/components/inventory-popup/inventory-popup.component';
 import { InventoryService } from '../../services/inventory.service';
+
 import { IProduct, IProductData } from '../../models/IProduct';
 import { HelperService } from 'src/app/shared/service/helper.service';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -15,7 +16,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './inventory.component.html',
   styleUrls: ['./inventory.component.scss'],
 })
-export class InventoryComponent {
+export class InventoryComponent implements OnInit {
+  product: any;
+  listProduct: any;
   @ViewChildren('trData') trData!: QueryList<ElementRef>;
 
   constructor(
@@ -23,7 +26,7 @@ export class InventoryComponent {
     private _Router: Router,
     private _InventoryService: InventoryService,
     private _HelperService: HelperService
-  ) {}
+  ) { }
 
   listData: {
     name: string;
@@ -68,4 +71,6 @@ export class InventoryComponent {
   navigateToProductInfo(index: number) {
     this._Router.navigate([`/dashboard/product-info/${index + 1}`]);
   }
+
+
 }

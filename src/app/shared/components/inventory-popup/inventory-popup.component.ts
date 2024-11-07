@@ -1,6 +1,9 @@
 import { Component, Renderer2 } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { InventoryService } from '../../service/inventory.service';
+import { HelperService } from '../../service/helper.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-inventory-popup',
@@ -8,40 +11,108 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./inventory-popup.component.scss']
 })
 export class InventoryPopupComponent {
-  files: File[] = [];
+  newOrderForm: FormGroup;
+  imageName: string | any;
+  inventoryList: any;
+  inventoryId: any;
+  isUpdate: boolean = false;
 
-  profileImgValue: any
   constructor(
-    private formBuilder: FormGroup,
+    private formBuilder: FormBuilder,
     private renderer: Renderer2,
-    public dialogRef: MatDialogRef<InventoryPopupComponent>
+    public dialogRef: MatDialogRef<InventoryPopupComponent>,
+    private _InventoryService: InventoryService,
+    private _HelperService: HelperService,
+    private router: Router,
+    private _ActivatedRoute: ActivatedRoute
   ) {
+    this.newOrderForm = this.formBuilder.group({
+      productName: ['', Validators.required],
+      productId: ['', Validators.required],
+      category: ['', Validators.required],
+      orderValue: ['', Validators.required],
+      quantity: ['', Validators.required],
+      unit: ['', Validators.required],
+      buyingPrice: ['', Validators.required],
+      dateOfDelivery: ['', Validators.required]
+    });
+
+    // Inventory Add&Edit
+    this.imageName = _HelperService.imgPath;
+    console.log(_ActivatedRoute.snapshot.params['id']);
+    this.inventoryId = _ActivatedRoute.snapshot.params['id'];
+    if (this.inventoryId) {
+      this.isUpdate = true;
+      this.getProductById(this.inventoryId)
+    } else {
+      this.isUpdate = false;
+    }
 
   }
-  newInventoryForm = new FormGroup({
-    Name: new FormControl('', Validators.required),
-    Image: new FormControl('', Validators.required),
-    productId: new FormControl(''),
-    CategoryID: new FormControl('', Validators.required),
-    Threshold: new FormControl('', Validators.required),
-    Quantity: new FormControl('', Validators.required),
-    Unit: new FormControl('', Validators.required),
-    Price: new FormControl('', Validators.required),
-    ExpiryDate: new FormControl('', Validators.required)
-  });
 
+  inventoryForm = new FormGroup({
+    Name: new FormControl(null),
+    Category: new FormControl(null),
+    Price: new FormControl(null),
+    Quantity: new FormControl(null),
+    Unit: new FormControl(null),
+    ExpiryDate: new FormControl(null),
+    Threshold: new FormControl(null),
+  })
 
-  onSelect(event: any) {
-    console.log(event.addedFiles[0]);
-    this.profileImgValue = event.addedFiles[0]
-    this.files.push(...event.addedFiles);
+  onSubmit(data: FormGroup) {
+    let myData = new FormData();
+    Object.keys(data.value).forEach(([key, value]) => {
+      myData.append(key, value);
+    })
+    myData.append('Image', this.imageName, this.imageName.Image);
+
+    if (this.inventoryId) {
+      this._InventoryService.editProduct(myData, this.inventoryId).subscribe({
+        next: (res) => {
+
+        }, error: (err) => {
+          this._HelperService.error(err)
+        }, complete: () => {
+          this._HelperService.success('Product Update Success');
+          this.router.navigate(['/dashboard/inventory']);
+        }
+      })
+
+    } else {
+      this._InventoryService.addProduct(myData).subscribe({
+        next: (res) => {
+          console.log(res);
+
+        }, error: (err) => {
+          this._HelperService.error(err)
+        }, complete: () => {
+          this._HelperService.success('Product Add Success');
+          this.router.navigate(['/dashboard/inventory']);
+        }
+      })
+    }
+
   }
 
-  onRemove(event: any) {
-    this.files.splice(this.files.indexOf(event), 1);
-    this.profileImgValue = false
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.imageName = file.name;
+    }
   }
 
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+  }
+
+  onDrop(event: DragEvent) {
+    event.preventDefault();
+    const files = event.dataTransfer?.files;
+    if (files && files.length > 0) {
+      this.imageName = files[0].name;
+    }
+  }
 
   browseFiles() {
     const fileInput = document.getElementById('imageUpload') as HTMLInputElement;
@@ -50,26 +121,36 @@ export class InventoryPopupComponent {
     }
   }
 
-  onSubmit(data: FormGroup) {
-    let newOrderForm = new FormData();
-    // newOrderForm.append("Image", this.profileImgValue);
-    // newOrderForm.append("CategoryID", data.value.CategoryID);
-    // newOrderForm.append("Name", data.value.Name);
-    // newOrderForm.append("Unit", data.value.Unit);
-    // newOrderForm.append("Price", data.value.Price);
-    // newOrderForm.append("Quantity", data.value.Quantity);
-    // newOrderForm.append("EcpiryDate", data.value.ExpiryDate);
-    // newOrderForm.append("Threshold", data.value.Threshold)
+  getProductById(id: number) {
+    this._InventoryService.getProductById(id).subscribe({
+      next: (res) => {
+        this.inventoryList = res;
+      }, error: (err) => {
 
-    Object.keys(data.value).forEach(([key, value]) => {
-      newOrderForm.append(key, value);
+      }, complete: () => {
+        // this.imageName = 
+        this.inventoryForm.patchValue({
+          Name: this.inventoryList.Name,
+          Category: this.inventoryList.Category,
+          Price: this.inventoryList.Price,
+          Quantity: this.inventoryList.Quantity,
+          Unit: this.inventoryList.Unit,
+          ExpiryDate: this.inventoryList.ExpiryDate,
+          Threshold: this.inventoryList.Threshold,
+        })
+      }
     })
+  }
 
+  // image
+  files: File[] = [];
+  onSelect(event: any) {
+    this.imageName = event.addedFiles[0];
+    this.files.push(...event.addedFiles);
+  }
 
-
-    if (this.files.length > 0) {
-      newOrderForm.append('Image', this.files[0], this.files[0].name)
-    }
+  onRemove(event: any) {
+    this.files.splice(this.files.indexOf(event), 1);
   }
 
   onCancel() {
