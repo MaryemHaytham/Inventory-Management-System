@@ -21,7 +21,9 @@ export class InventoryService {
     return this._HttpClient.delete<IDeleteResponse>(`api/products/${id}`)
   }
 
-  addProduct(addForm: FormData): void {
+  addProduct(addForm: FormData): Observable<any> {
+    return this._HttpClient.post<any>('api/products', addForm);
+
 
   }
 

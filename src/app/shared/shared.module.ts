@@ -57,7 +57,8 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     GeneralPopupComponent,
     InventoryPopupComponent,
     MatMenuModule,
-    CommonModule
+    CommonModule,
+    NgxDropzoneModule
   ],
 })
 export class SharedModule {}
